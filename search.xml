@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/08/30/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>FIO——提供基于posix thread 原理的异步FIO（AIO）</title>
     <url>/2022/03/27/FIO/</url>
     <content><![CDATA[<p>具备简单的集成性基础功能。</p>
@@ -52,18 +32,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>MnP ——A high speed web service</title>
-    <url>/2022/03/27/MnP-Server/</url>
-    <content><![CDATA[<p>具备简单的集成性基础功能。</p>
-<h2 id="About-What"><a href="#About-What" class="headerlink" title="About What"></a>About What</h2><p>We use the <strong>libevent</strong> to making our <strong>MnP</strong>. That’s so good——because the <strong>libevent</strong> it’s one has industrial stability socket library (though it occupies a very big memory,but it also has a very high speed).</p>
-<span id="more"></span>
-
-<p>In this time,this project didn’t done. But my idea is this project has a industrial stability the same as <strong>libevent</strong>, and it has a more portability. So it can has a relatively compact memory size and a high runing speed.</p>
-<p>Above it’s my project’s summary in initial stage.<br><img src="https://github.com/yauntyour/MnP/blob/master/doc/MnP.png" alt="image"></p>
-<h2 id="Codes-root-folder"><a href="#Codes-root-folder" class="headerlink" title="Codes root folder"></a>Codes root folder</h2><p>​	<a hear="https://github.com/yauntyour/MnP/blob/master/codes/readme.md">Codes root folder Markdown</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>redstone爬虫框架发行说明</title>
     <url>/2020/08/21/Python%E8%87%AA%E7%A0%94%E7%88%AC%E8%99%AB%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<p>具备简单的集成性基础功能。</p>
@@ -85,6 +53,18 @@
 <p>外部扩展库依赖：random，re，request，urllib，http，os，time，tqdm，chardet，threading</p>
 <p>作者：yauntyour</p>
 <p>Github：<a href="https://github.com/yauntyour/redston">https://github.com/yauntyour/redston</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>MnP ——A high speed web service</title>
+    <url>/2022/03/27/MnP-Server/</url>
+    <content><![CDATA[<p>具备简单的集成性基础功能。</p>
+<h2 id="About-What"><a href="#About-What" class="headerlink" title="About What"></a>About What</h2><p>We use the <strong>libevent</strong> to making our <strong>MnP</strong>. That’s so good——because the <strong>libevent</strong> it’s one has industrial stability socket library (though it occupies a very big memory,but it also has a very high speed).</p>
+<span id="more"></span>
+
+<p>In this time,this project didn’t done. But my idea is this project has a industrial stability the same as <strong>libevent</strong>, and it has a more portability. So it can has a relatively compact memory size and a high runing speed.</p>
+<p>Above it’s my project’s summary in initial stage.<br><img src="https://github.com/yauntyour/MnP/blob/master/doc/MnP.png" alt="image"></p>
+<h2 id="Codes-root-folder"><a href="#Codes-root-folder" class="headerlink" title="Codes root folder"></a>Codes root folder</h2><p>​	<a hear="https://github.com/yauntyour/MnP/blob/master/codes/readme.md">Codes root folder Markdown</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -126,7 +106,62 @@
 <li>加入zlib支持gzip压缩</li>
 <li>加入升级版res，资源池</li>
 </ol>
-<h3 id="Made-by-yauntyour-Copyright-reserved"><a href="#Made-by-yauntyour-Copyright-reserved" class="headerlink" title="Made by yauntyour Copyright reserved."></a>Made by yauntyour Copyright reserved.</h3><h3 id="e-mail-121-x61-x75-x6e-116-121-x6f-117-114-64-111-117-x74-108-x6f-111-107-x2e-99-111-x6d"><a href="#e-mail-121-x61-x75-x6e-116-121-x6f-117-114-64-111-117-x74-108-x6f-111-107-x2e-99-111-x6d" class="headerlink" title="e-mail:&#121;&#x61;&#x75;&#x6e;&#116;&#121;&#x6f;&#117;&#114;&#64;&#111;&#117;&#x74;&#108;&#x6f;&#111;&#107;&#x2e;&#99;&#111;&#x6d;"></a>e-mail:<a href="mailto:&#121;&#x61;&#x75;&#x6e;&#116;&#121;&#x6f;&#117;&#114;&#64;&#111;&#117;&#x74;&#108;&#x6f;&#111;&#107;&#x2e;&#99;&#111;&#x6d;">&#121;&#x61;&#x75;&#x6e;&#116;&#121;&#x6f;&#117;&#114;&#64;&#111;&#117;&#x74;&#108;&#x6f;&#111;&#107;&#x2e;&#99;&#111;&#x6d;</a></h3><h3 id="Copyright-see-the-file-LICENSE"><a href="#Copyright-see-the-file-LICENSE" class="headerlink" title="Copyright  see the file LICENSE."></a>Copyright  see the file LICENSE.</h3>]]></content>
+<h3 id="Made-by-yauntyour-Copyright-reserved"><a href="#Made-by-yauntyour-Copyright-reserved" class="headerlink" title="Made by yauntyour Copyright reserved."></a>Made by yauntyour Copyright reserved.</h3><h3 id="e-mail-x79-x61-x75-x6e-x74-121-x6f-x75-x72-64-x6f-x75-x74-108-111-111-x6b-46-x63-x6f-x6d"><a href="#e-mail-x79-x61-x75-x6e-x74-121-x6f-x75-x72-64-x6f-x75-x74-108-111-111-x6b-46-x63-x6f-x6d" class="headerlink" title="e-mail:&#x79;&#x61;&#x75;&#x6e;&#x74;&#121;&#x6f;&#x75;&#x72;&#64;&#x6f;&#x75;&#x74;&#108;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#x6d;"></a>e-mail:<a href="mailto:&#x79;&#x61;&#x75;&#x6e;&#x74;&#121;&#x6f;&#x75;&#x72;&#64;&#x6f;&#x75;&#x74;&#108;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#x6d;">&#x79;&#x61;&#x75;&#x6e;&#x74;&#121;&#x6f;&#x75;&#x72;&#64;&#x6f;&#x75;&#x74;&#108;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#x6d;</a></h3><h3 id="Copyright-see-the-file-LICENSE"><a href="#Copyright-see-the-file-LICENSE" class="headerlink" title="Copyright  see the file LICENSE."></a>Copyright  see the file LICENSE.</h3>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/08/30/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>COROUTINE(协程)</title>
+    <url>/2022/02/08/coroutine/</url>
+    <content><![CDATA[<p>异步的操作一般用于IO操作的等待与执行，比如</p>
+<span id="more"></span>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* codes */</span></span><br><span class="line">fread(<span class="type">void</span> *ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> nmemb, FILE *stream);</span><br><span class="line"><span class="comment">/* codes */</span></span><br></pre></td></tr></table></figure>
+
+<p>等待读取会占用大量的时间，so，我们很容易想到利用多线程来实现并发甚至是并行操作。</p>
+<p>但是这时我们不得不面临一个问题：线程的切换和唤醒操作将同样占用不菲的处理资源开销。</p>
+<p>那么有没有一种<u>单线程的异步操作</u>呢？有，这时我们想到了著名的单线程异步操作——JavaScript；</p>
+<p>众所周知，JS是单线程的，而且是支持异步操作的。</p>
+<p>所以我们引入JS的 “协程操作”；</p>
+<p><img src="https://pic1.zhimg.com/v2-6e24040bcefef3325dd2493f99013257_1440w.jpg?source=172ae18b" alt="什么是协程？——来源于知乎"></p>
+<p>所以理论上，我们需求的利用多核的协程是很不现实的。因为这期间核与核之间的操作是相对独立的。</p>
+<p>而且睡眠只能停止上下文的交换，不能停止流水的执行。</p>
+<p>所以我们还是来研究一下单核的异步操作吧。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*control with coroutine*/</span></span><br><span class="line">C:</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">goto</span> B;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">goto</span> A;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*create the codes with close spare*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">0</span>)&#123;</span><br><span class="line">A:</span><br><span class="line">    <span class="keyword">while</span> (i &lt; <span class="number">100</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        i += <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">        <span class="keyword">goto</span> C;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">B:</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        i -= <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">        <span class="keyword">goto</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// CONTROL(C);</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>显而易见，我们可以利用<code>goto</code>语句来实现跳转的过程，期间我们把代码封装成代码块（code block），但是这个编写的过程我们可以加宏以优化</p>
+<p>coroutine.h：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __COROUTINE__H__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __COROUTINE__H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEFCODE(__name__,__expression__,codes...) <span class="keyword">if</span>(0)&#123;__name__:<span class="keyword">if</span>(__expression__)&#123;codes&#125;&#125;;</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CONTROL(codes...) __CONTROL__: codes;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> function(func_name,end_goto,__expression__,codes...) <span class="keyword">if</span>(0)&#123;func_name:<span class="keyword">if</span>(__expression__)&#123;codes&#125;goto end_goto;&#125;;</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> used(func_name,end_goto) goto func_name;end_goto:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  <span class="comment">//!__COROUTINE__H__</span></span></span><br></pre></td></tr></table></figure>
+
+<p>现在上面的代码可以改写成：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Debug</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;coroutine.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*control with coroutine*/</span></span><br><span class="line">    CONTROL(&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">goto</span> B;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">goto</span> A;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">/*create the codes with close spare*/</span></span><br><span class="line">    DEFCODE(A, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; <span class="number">100</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">            <span class="keyword">goto</span> __CONTROL__;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    DEFCODE(B, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            i -= <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,i);</span><br><span class="line">            <span class="keyword">goto</span> __CONTROL__;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">/*a example with test code block*/</span></span><br><span class="line">    function(test,test_end, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;test.\n&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    used(test,test_end);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>显然大大提高了效率。而且加入了<code>CONTROL()</code>控制函数，可以在这里添加用于控制的代码块。</p>
+<p>跳转至  <code>__CONTROL__</code>代码块就是控制函数所在；</p>
+<p>这种方式可以显示地避免杂七杂八的函数命名方式，实现了复用和优化。</p>
+<blockquote>
+<p><em>在一个函数中，有且只有一个 <code>__CONTROL__</code>多了会打架，不过可以安排</em>。</p>
+</blockquote>
+<p>可以利用<code>function()</code>函数来定义一个可以带有返回的代码块，并用<code>used()</code>来调用</p>
+]]></content>
   </entry>
   <entry>
     <title>appweb (v2.0)</title>
@@ -171,7 +206,7 @@
 <li>支持HTTP2-3</li>
 <li>UDP接口开放</li>
 </ol>
-<h3 id="Made-by-yauntyour-Copyright-reserved"><a href="#Made-by-yauntyour-Copyright-reserved" class="headerlink" title="Made by yauntyour Copyright reserved."></a>Made by yauntyour Copyright reserved.</h3><h3 id="e-mail-121-x61-x75-x6e-116-x79-111-x75-114-64-x6f-117-116-108-111-111-x6b-x2e-99-x6f-109"><a href="#e-mail-121-x61-x75-x6e-116-x79-111-x75-114-64-x6f-117-116-108-111-111-x6b-x2e-99-x6f-109" class="headerlink" title="e-mail:&#121;&#x61;&#x75;&#x6e;&#116;&#x79;&#111;&#x75;&#114;&#64;&#x6f;&#117;&#116;&#108;&#111;&#111;&#x6b;&#x2e;&#99;&#x6f;&#109;"></a>e-mail:<a href="mailto:&#121;&#x61;&#x75;&#x6e;&#116;&#x79;&#111;&#x75;&#114;&#64;&#x6f;&#117;&#116;&#108;&#111;&#111;&#x6b;&#x2e;&#99;&#x6f;&#109;">&#121;&#x61;&#x75;&#x6e;&#116;&#x79;&#111;&#x75;&#114;&#64;&#x6f;&#117;&#116;&#108;&#111;&#111;&#x6b;&#x2e;&#99;&#x6f;&#109;</a></h3><h3 id="Copyright-see-the-file-LICENSE"><a href="#Copyright-see-the-file-LICENSE" class="headerlink" title="Copyright  see the file LICENSE."></a>Copyright  see the file LICENSE.</h3>]]></content>
+<h3 id="Made-by-yauntyour-Copyright-reserved"><a href="#Made-by-yauntyour-Copyright-reserved" class="headerlink" title="Made by yauntyour Copyright reserved."></a>Made by yauntyour Copyright reserved.</h3><h3 id="e-mail-121-97-117-110-x74-x79-111-117-x72-64-x6f-117-116-x6c-111-x6f-x6b-x2e-99-x6f-x6d"><a href="#e-mail-121-97-117-110-x74-x79-111-117-x72-64-x6f-117-116-x6c-111-x6f-x6b-x2e-99-x6f-x6d" class="headerlink" title="e-mail:&#121;&#97;&#117;&#110;&#x74;&#x79;&#111;&#117;&#x72;&#64;&#x6f;&#117;&#116;&#x6c;&#111;&#x6f;&#x6b;&#x2e;&#99;&#x6f;&#x6d;"></a>e-mail:<a href="mailto:&#121;&#97;&#117;&#110;&#x74;&#x79;&#111;&#117;&#x72;&#64;&#x6f;&#117;&#116;&#x6c;&#111;&#x6f;&#x6b;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#97;&#117;&#110;&#x74;&#x79;&#111;&#117;&#x72;&#64;&#x6f;&#117;&#116;&#x6c;&#111;&#x6f;&#x6b;&#x2e;&#99;&#x6f;&#x6d;</a></h3><h3 id="Copyright-see-the-file-LICENSE"><a href="#Copyright-see-the-file-LICENSE" class="headerlink" title="Copyright  see the file LICENSE."></a>Copyright  see the file LICENSE.</h3>]]></content>
   </entry>
   <entry>
     <title>dataset with C/C++</title>
@@ -192,41 +227,6 @@
 <h1 id="授权许可"><a href="#授权许可" class="headerlink" title="授权许可"></a>授权许可</h1><p>100%完全开源，您可以自由使用此设计。用途由您自行决定。</p>
 <p><strong>请保留作者出处</strong></p>
 <p>This library was made by <a href="https://github.com/yauntyour/">yauntyour</a>.</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>COROUTINE(协程)</title>
-    <url>/2022/02/08/coroutine/</url>
-    <content><![CDATA[<p>异步的操作一般用于IO操作的等待与执行，比如</p>
-<span id="more"></span>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* codes */</span></span><br><span class="line">fread(<span class="type">void</span> *ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> nmemb, FILE *stream);</span><br><span class="line"><span class="comment">/* codes */</span></span><br></pre></td></tr></table></figure>
-
-<p>等待读取会占用大量的时间，so，我们很容易想到利用多线程来实现并发甚至是并行操作。</p>
-<p>但是这时我们不得不面临一个问题：线程的切换和唤醒操作将同样占用不菲的处理资源开销。</p>
-<p>那么有没有一种<u>单线程的异步操作</u>呢？有，这时我们想到了著名的单线程异步操作——JavaScript；</p>
-<p>众所周知，JS是单线程的，而且是支持异步操作的。</p>
-<p>所以我们引入JS的 “协程操作”；</p>
-<p><img src="https://pic1.zhimg.com/v2-6e24040bcefef3325dd2493f99013257_1440w.jpg?source=172ae18b" alt="什么是协程？——来源于知乎"></p>
-<p>所以理论上，我们需求的利用多核的协程是很不现实的。因为这期间核与核之间的操作是相对独立的。</p>
-<p>而且睡眠只能停止上下文的交换，不能停止流水的执行。</p>
-<p>所以我们还是来研究一下单核的异步操作吧。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*control with coroutine*/</span></span><br><span class="line">C:</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">goto</span> B;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">goto</span> A;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*create the codes with close spare*/</span></span><br><span class="line"><span class="keyword">if</span>(<span class="number">0</span>)&#123;</span><br><span class="line">A:</span><br><span class="line">    <span class="keyword">while</span> (i &lt; <span class="number">100</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        i += <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">        <span class="keyword">goto</span> C;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">B:</span><br><span class="line">    <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        i -= <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">        <span class="keyword">goto</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// CONTROL(C);</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>显而易见，我们可以利用<code>goto</code>语句来实现跳转的过程，期间我们把代码封装成代码块（code block），但是这个编写的过程我们可以加宏以优化</p>
-<p>coroutine.h：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __COROUTINE__H__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __COROUTINE__H__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DEFCODE(__name__,__expression__,codes...) <span class="keyword">if</span>(0)&#123;__name__:<span class="keyword">if</span>(__expression__)&#123;codes&#125;&#125;;</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CONTROL(codes...) __CONTROL__: codes;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> function(func_name,end_goto,__expression__,codes...) <span class="keyword">if</span>(0)&#123;func_name:<span class="keyword">if</span>(__expression__)&#123;codes&#125;goto end_goto;&#125;;</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> used(func_name,end_goto) goto func_name;end_goto:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span>  <span class="comment">//!__COROUTINE__H__</span></span></span><br></pre></td></tr></table></figure>
-
-<p>现在上面的代码可以改写成：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Debug</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;coroutine.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/*control with coroutine*/</span></span><br><span class="line">    CONTROL(&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">goto</span> B;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">goto</span> A;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">/*create the codes with close spare*/</span></span><br><span class="line">    DEFCODE(A, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; <span class="number">100</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            i += <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">            <span class="keyword">goto</span> __CONTROL__;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    DEFCODE(B, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="keyword">while</span> (i != <span class="number">0</span> &amp;&amp; i &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            i -= <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,i);</span><br><span class="line">            <span class="keyword">goto</span> __CONTROL__;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">/*a example with test code block*/</span></span><br><span class="line">    function(test,test_end, <span class="number">1</span>, &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;test.\n&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    used(test,test_end);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>显然大大提高了效率。而且加入了<code>CONTROL()</code>控制函数，可以在这里添加用于控制的代码块。</p>
-<p>跳转至  <code>__CONTROL__</code>代码块就是控制函数所在；</p>
-<p>这种方式可以显示地避免杂七杂八的函数命名方式，实现了复用和优化。</p>
-<blockquote>
-<p><em>在一个函数中，有且只有一个 <code>__CONTROL__</code>多了会打架，不过可以安排</em>。</p>
-</blockquote>
-<p>可以利用<code>function()</code>函数来定义一个可以带有返回的代码块，并用<code>used()</code>来调用</p>
 ]]></content>
   </entry>
 </search>
