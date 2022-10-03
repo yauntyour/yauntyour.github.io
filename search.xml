@@ -229,4 +229,22 @@
 <p>This library was made by <a href="https://github.com/yauntyour/">yauntyour</a>.</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>ESP32-WROOM-32E开发板</title>
+    <url>/2022/10/03/ESP32-WROOM-E%E5%A1%AB%E5%9D%91%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<h1 id="ESP32-WROOM-32E开发板"><a href="#ESP32-WROOM-32E开发板" class="headerlink" title="ESP32-WROOM-32E开发板"></a>ESP32-WROOM-32E开发板</h1><p>（待续）</p>
+<span id="more"></span>]]></content>
+  </entry>
+  <entry>
+    <title>appweb (updata)</title>
+    <url>/2022/10/03/appweb-debug-updata/</url>
+    <content><![CDATA[<h1 id="Appweb-updata"><a href="#Appweb-updata" class="headerlink" title="Appweb updata"></a>Appweb updata</h1><p>改进了acc与rsc的模块架构</p>
+<span id="more"></span>
+
+<ul>
+<li>acc -&gt; rsc 直入式调动调度器</li>
+<li>rsc Error 优化</li>
+</ul>
+]]></content>
+  </entry>
 </search>
