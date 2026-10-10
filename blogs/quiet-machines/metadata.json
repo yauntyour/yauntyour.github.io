@@ -1,0 +1,49 @@
+{
+  "id": "quiet-machines",
+  "title": "安静的机器",
+  "subtitle": "关于「不做多余的事」的一点想法",
+  "excerpt": "一台安静的机器，通常意味着设计者替使用者做完了大部分决定。 好的构建工具不该让你读完它的文档才能用起来。它应该有一个能跑通的默认值集合，然后在你真的需要时，才把旋钮交出来。 我越来越喜欢这种顺序： 先把…",
+  "author": "曦儿",
+  "date": "2025-11-02",
+  "updated": "2025-11-02",
+  "timestamp": "2025-11-02T00:00:00",
+  "tags": [
+    "随笔",
+    "工程哲学"
+  ],
+  "categories": [
+    "随笔"
+  ],
+  "topics": [
+    "杂谈"
+  ],
+  "markers": [
+    "随笔"
+  ],
+  "cover": "",
+  "lang": "zh-CN",
+  "url": "blogs/quiet-machines/app.html",
+  "draft": false,
+  "hidden": false,
+  "private": false,
+  "pinned": false,
+  "featured": false,
+  "weight": 20.0,
+  "series": "",
+  "collections": [],
+  "words": 333,
+  "minutes": 1,
+  "hasCot": false,
+  "cot": [],
+  "toc": [],
+  "aliases": [],
+  "prev": "hello-inkstone",
+  "next": "first-light",
+  "related": [
+    "first-light"
+  ],
+  "backlinks": [],
+  "outbound": [],
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/quiet-machines/index.md",
+  "assets": []
+}

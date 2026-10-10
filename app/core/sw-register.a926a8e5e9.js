@@ -1,0 +1,1 @@
+(function(){'use strict';if(!('serviceWorker'in navigator))return;if(location.protocol!=='http:'&&location.protocol!=='https:')return;const root=document.documentElement.getAttribute('data-root')||'';window.addEventListener('load',()=>{navigator.serviceWorker.register(root+'sw.js').catch(()=>{});});})();

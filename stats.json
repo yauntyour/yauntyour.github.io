@@ -1,0 +1,137 @@
+{
+  "generated": "2026-10-10T06:46:13",
+  "buildId": "4d84bf56",
+  "total": {
+    "posts": 4,
+    "pages": 2,
+    "words": 7985,
+    "minutes": 20
+  },
+  "byYear": [
+    {
+      "year": "2026",
+      "posts": 2,
+      "words": 7533
+    },
+    {
+      "year": "2025",
+      "posts": 1,
+      "words": 333
+    },
+    {
+      "year": "2024",
+      "posts": 1,
+      "words": 119
+    }
+  ],
+  "topTags": [
+    {
+      "name": "随笔",
+      "count": 2
+    },
+    {
+      "name": "线性注意力",
+      "count": 1
+    },
+    {
+      "name": "注意力机制",
+      "count": 1
+    },
+    {
+      "name": "MoE",
+      "count": 1
+    },
+    {
+      "name": "记忆模块",
+      "count": 1
+    },
+    {
+      "name": "YOLO",
+      "count": 1
+    },
+    {
+      "name": "视觉模型",
+      "count": 1
+    },
+    {
+      "name": "核函数",
+      "count": 1
+    },
+    {
+      "name": "静态站点",
+      "count": 1
+    },
+    {
+      "name": "Python",
+      "count": 1
+    },
+    {
+      "name": "构建系统",
+      "count": 1
+    },
+    {
+      "name": "前端",
+      "count": 1
+    },
+    {
+      "name": "设计",
+      "count": 1
+    },
+    {
+      "name": "Markdown",
+      "count": 1
+    },
+    {
+      "name": "渲染管线",
+      "count": 1
+    },
+    {
+      "name": "KaTeX",
+      "count": 1
+    },
+    {
+      "name": "Mermaid",
+      "count": 1
+    },
+    {
+      "name": "CoT",
+      "count": 1
+    },
+    {
+      "name": "思维链",
+      "count": 1
+    },
+    {
+      "name": "交互设计",
+      "count": 1
+    }
+  ],
+  "topCategories": [
+    {
+      "name": "随笔",
+      "count": 2
+    },
+    {
+      "name": "论文",
+      "count": 1
+    },
+    {
+      "name": "深度学习",
+      "count": 1
+    },
+    {
+      "name": "工程",
+      "count": 1
+    }
+  ],
+  "authors": [
+    {
+      "name": "曦儿",
+      "count": 3
+    },
+    {
+      "name": "Yauntyours",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /app/database/
+
+Sitemap: https://yaunt.github.io/blog/sitemap.xml

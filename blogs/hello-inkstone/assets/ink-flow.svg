@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="水墨流动示意图">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f3ea"/><stop offset="100%" stop-color="#efe8da"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8a6a28"/><stop offset="45%" stop-color="#e8d29a"/>
+      <stop offset="70%" stop-color="#b08a3e"/><stop offset="100%" stop-color="#f3e6bf"/>
+    </linearGradient>
+    <radialGradient id="inkA" cx="28%" cy="34%">
+      <stop offset="0%" stop-color="#1c1a17" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#1c1a17" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#1c1a17" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="inkB" cx="72%" cy="62%">
+      <stop offset="0%" stop-color="#b08a3e" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#b08a3e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <ellipse cx="340" cy="220" rx="300" ry="180" fill="url(#inkA)" filter="url(#soft)"/>
+  <ellipse cx="860" cy="400" rx="330" ry="200" fill="url(#inkB)" filter="url(#soft)"/>
+  <path d="M90 470c150-20 250-96 310-230 26 108 96 190 214 234 128 48 300 44 492-14"
+        fill="none" stroke="#1c1a17" stroke-opacity="0.42" stroke-width="3" stroke-linecap="round"/>
+  <path d="M140 520c168-16 286-78 358-186" fill="none" stroke="url(#gold)" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="700" cy="470" r="6" fill="#1c1a17" fill-opacity="0.3"/>
+  <circle cx="760" cy="500" r="4" fill="#1c1a17" fill-opacity="0.22"/>
+  <circle cx="648" cy="508" r="3" fill="#b08a3e" fill-opacity="0.5"/>
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="url(#gold)" stroke-opacity="0.6" stroke-width="1.2"/>
+</svg>

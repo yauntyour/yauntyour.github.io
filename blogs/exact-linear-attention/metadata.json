@@ -1,0 +1,387 @@
+{
+  "id": "exact-linear-attention",
+  "title": "Exact Linear Attention",
+  "subtitle": "从精确可分解核函数到线性复杂度注意力 —— 推导、工程改造与实验验证",
+  "excerpt": "线性注意力长期被视为把 Transformer 扩展到长序列的关键方向。本文给出一种\"精确\"线性注意力：利用核函数的精确可分解性，把 $O(L^2)$ 注意力改写为 $O(L)$ 的线性形式而不损失精度，并进一步讨论 FFN 可解释性、Hyper-Link 残差替换与\"质记忆\"模块，最后把方法推广到视觉模型。",
+  "author": "Yauntyours",
+  "date": "2026-06-04",
+  "updated": "2026-06-04",
+  "timestamp": "2026-06-04T00:00:00",
+  "tags": [
+    "线性注意力",
+    "注意力机制",
+    "MoE",
+    "记忆模块",
+    "YOLO",
+    "视觉模型",
+    "核函数"
+  ],
+  "categories": [
+    "论文",
+    "深度学习"
+  ],
+  "topics": [
+    "Exact Linear Attention"
+  ],
+  "markers": [
+    "论文",
+    "核心工作"
+  ],
+  "cover": "../../blogs/exact-linear-attention/assets/Introduce.webp",
+  "lang": "zh-CN",
+  "url": "blogs/exact-linear-attention/app.html",
+  "draft": false,
+  "hidden": false,
+  "private": false,
+  "pinned": true,
+  "featured": true,
+  "weight": 100.0,
+  "series": "Exact Linear Attention",
+  "collections": [],
+  "words": 4953,
+  "minutes": 12,
+  "hasCot": false,
+  "cot": [],
+  "toc": [
+    {
+      "level": 2,
+      "text": "Table of Contents",
+      "anchor": "table-of-contents",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "1. Introduction",
+      "anchor": "1-introduction",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "2. Regarding Which Kernel Function is Suitable for This Task",
+      "anchor": "2-regarding-which-kernel-function-is-suitable-for-this-task",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "3. Exact Linear Attention Formulation",
+      "anchor": "3-exact-linear-attention-formulation",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "4. How to Construct Your Own Attention Kernel",
+      "anchor": "4-how-to-construct-your-own-attention-kernel",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "5. Challenges in Engineering Construction",
+      "anchor": "5-challenges-in-engineering-construction",
+      "children": [
+        {
+          "level": 3,
+          "text": "5.1 The Dilemma of FFN",
+          "anchor": "5-1-the-dilemma-of-ffn",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "5.2 Hyperlink-Based Residual Replacement for Degradation Eradication",
+          "anchor": "5-2-hyperlink-based-residual-replacement-for-degradation-eradication",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "5.3 How Memory Works",
+          "anchor": "5-3-how-memory-works",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "text": "6. Experiments",
+      "anchor": "6-experiments",
+      "children": [
+        {
+          "level": 3,
+          "text": "6.1 No Memory Training Comparison",
+          "anchor": "6-1-no-memory-training-comparison",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "6.2 Memory Additional",
+          "anchor": "6-2-memory-additional",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "6.3 Long-range Training",
+          "anchor": "6-3-long-range-training",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "text": "7. Extend to Vision Models",
+      "anchor": "7-extend-to-vision-models",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "8. Exploratory Works",
+      "anchor": "8-exploratory-works",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "Acknowledgments",
+      "anchor": "acknowledgments",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "References",
+      "anchor": "references",
+      "children": []
+    }
+  ],
+  "aliases": [
+    "ela",
+    "exact-linear-attention-paper"
+  ],
+  "prev": "",
+  "next": "hello-inkstone",
+  "related": [
+    "hello-inkstone",
+    "quiet-machines",
+    "first-light"
+  ],
+  "backlinks": [],
+  "outbound": [],
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/exact-linear-attention/index.md",
+  "assets": [
+    {
+      "name": "assets/Architecture.png",
+      "url": "assets/Architecture.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcset": "assets/Architecture-820.webp 820w, assets/Architecture.webp 1536w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/Architecture.webp"
+    },
+    {
+      "name": "assets/Introduce.png",
+      "url": "assets/Introduce.webp",
+      "width": 1536,
+      "height": 1024,
+      "srcset": "assets/Introduce-820.webp 820w, assets/Introduce.webp 1536w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/Introduce.webp"
+    },
+    {
+      "name": "assets/benchmark_3way.png",
+      "url": "assets/benchmark_3way.webp",
+      "width": 2224,
+      "height": 1684,
+      "srcset": "assets/benchmark_3way-820.webp 820w, assets/benchmark_3way-1640.webp 1640w, assets/benchmark_3way.webp 2224w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/benchmark_3way.webp"
+    },
+    {
+      "name": "assets/benchmark_accuracy.png",
+      "url": "assets/benchmark_accuracy.webp",
+      "width": 2235,
+      "height": 657,
+      "srcset": "assets/benchmark_accuracy-820.webp 820w, assets/benchmark_accuracy-1640.webp 1640w, assets/benchmark_accuracy.webp 2235w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/benchmark_accuracy.webp"
+    },
+    {
+      "name": "assets/benchmark_plot.png",
+      "url": "assets/benchmark_plot.webp",
+      "width": 2234,
+      "height": 654,
+      "srcset": "assets/benchmark_plot-820.webp 820w, assets/benchmark_plot-1640.webp 1640w, assets/benchmark_plot.webp 2234w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/benchmark_plot.webp"
+    },
+    {
+      "name": "assets/detection_viz.png",
+      "url": "assets/detection_viz.webp",
+      "width": 2967,
+      "height": 1478,
+      "srcset": "assets/detection_viz-820.webp 820w, assets/detection_viz-1640.webp 1640w, assets/detection_viz.webp 2967w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/detection_viz.webp"
+    },
+    {
+      "name": "assets/ffn_compare.png",
+      "url": "assets/ffn_compare.webp",
+      "width": 1761,
+      "height": 893,
+      "srcset": "assets/ffn_compare-820.webp 820w, assets/ffn_compare-1640.webp 1640w, assets/ffn_compare.webp 1761w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/ffn_compare.webp"
+    },
+    {
+      "name": "assets/fgpt_L2_loss.png",
+      "url": "assets/fgpt_L2_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_L2_loss.webp"
+    },
+    {
+      "name": "assets/fgpt_exp+hadmE50_loss.png",
+      "url": "assets/fgpt_exp+hadmE50_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_exp+hadmE50_loss.webp"
+    },
+    {
+      "name": "assets/fgpt_exp+hadm_fib_loss.png",
+      "url": "assets/fgpt_exp+hadm_fib_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_exp+hadm_fib_loss.webp"
+    },
+    {
+      "name": "assets/fgpt_exp+hadm_fob_loss.png",
+      "url": "assets/fgpt_exp+hadm_fob_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_exp+hadm_fob_loss.webp"
+    },
+    {
+      "name": "assets/fgpt_exp+hadm_loss.png",
+      "url": "assets/fgpt_exp+hadm_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_exp+hadm_loss.webp"
+    },
+    {
+      "name": "assets/fgpt_mem_loss.png",
+      "url": "assets/fgpt_mem_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/fgpt_mem_loss.webp"
+    },
+    {
+      "name": "assets/gpt_fib_loss.png",
+      "url": "assets/gpt_fib_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/gpt_fib_loss.webp"
+    },
+    {
+      "name": "assets/gpt_fob_loss.png",
+      "url": "assets/gpt_fob_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/gpt_fob_loss.webp"
+    },
+    {
+      "name": "assets/gpt_loss.png",
+      "url": "assets/gpt_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/gpt_loss.webp"
+    },
+    {
+      "name": "assets/gpt_mem_causal_loss.png",
+      "url": "assets/gpt_mem_causal_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/gpt_mem_causal_loss.webp"
+    },
+    {
+      "name": "assets/gpt_mem_loss.png",
+      "url": "assets/gpt_mem_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/gpt_mem_loss.webp"
+    },
+    {
+      "name": "assets/hyperlink.png",
+      "url": "assets/hyperlink.webp",
+      "width": 1774,
+      "height": 887,
+      "srcset": "assets/hyperlink-820.webp 820w, assets/hyperlink-1640.webp 1640w, assets/hyperlink.webp 1774w",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/hyperlink.webp"
+    },
+    {
+      "name": "assets/std_fgpt_L2_loss.png",
+      "url": "assets/std_fgpt_L2_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/std_fgpt_L2_loss.webp"
+    },
+    {
+      "name": "assets/std_fgpt_eh_loss.png",
+      "url": "assets/std_fgpt_eh_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/std_fgpt_eh_loss.webp"
+    },
+    {
+      "name": "assets/std_gpt_loss.png",
+      "url": "assets/std_gpt_loss.webp",
+      "width": 640,
+      "height": 480,
+      "srcset": "",
+      "sizes": "(max-width: 900px) 100vw, 1280px",
+      "lightbox": true,
+      "abs": "blogs/exact-linear-attention/assets/std_gpt_loss.webp"
+    }
+  ]
+}
