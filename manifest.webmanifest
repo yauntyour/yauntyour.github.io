@@ -2,7 +2,7 @@
   "name": "墨痕",
   "short_name": "墨痕",
   "description": "关于线性注意力、语言模型与工程实践的个人笔记。",
-  "start_url": "app.html",
+  "start_url": "index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f7f7f8",

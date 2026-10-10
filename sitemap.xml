@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://yaunt.github.io/blog/app.html</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>https://yaunt.github.io/blog/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
 <url><loc>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</loc><lastmod>2026-06-04T00:00:00Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</loc><lastmod>2026-10-10T00:00:00Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://yaunt.github.io/blog/blogs/quiet-machines/app.html</loc><lastmod>2025-11-02T00:00:00Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>

@@ -1,10 +1,10 @@
-/* Inkstone Service Worker · build 4d84bf56 */
-const VERSION = 'inkstone-4d84bf56';
+/* Inkstone Service Worker · build 368fcbe0 */
+const VERSION = 'inkstone-368fcbe0';
 const PRECACHE = [
-  "app.html",
+  "index.html",
   "app/database/blog-list.json",
   "app/css/base.eae2cd618c.css",
-  "app/core/app.561c91e64a.js",
+  "app/core/app.5c52a522e9.js",
   "app/core/enhance.149f04836d.js",
   "app/core/reading.f188e2a875.js",
   "app/core/search-ui.ceb6ee997e.js",
@@ -49,7 +49,7 @@ self.addEventListener('fetch', (event) => {
           caches.open(VERSION).then((cache) => cache.put(request, copy));
           return response;
         })
-        .catch(() => caches.match(request).then((hit) => hit || caches.match('app.html')))
+        .catch(() => caches.match(request).then((hit) => hit || caches.match('index.html')))
     );
     return;
   }
