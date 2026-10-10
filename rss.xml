@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-10T16:42:47Z</lastBuildDate>
+<lastBuildDate>2026-10-10T16:45:01Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -671,7 +671,7 @@
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="98052157">
+<div class="mermaid" data-src-hash="24523932">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -684,7 +684,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="13698318">
+<div class="mermaid" data-src-hash="60624703">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
