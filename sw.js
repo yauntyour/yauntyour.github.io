@@ -1,19 +1,19 @@
-/* Inkstone Service Worker · build 368fcbe0 */
-const VERSION = 'inkstone-368fcbe0';
+/* Inkstone Service Worker · build 105454ad */
+const VERSION = 'inkstone-105454ad';
 const PRECACHE = [
   "index.html",
   "app/database/blog-list.json",
   "app/css/base.eae2cd618c.css",
-  "app/core/app.5c52a522e9.js",
+  "app/core/app.e5b83762dd.js",
   "app/core/enhance.149f04836d.js",
   "app/core/reading.f188e2a875.js",
-  "app/core/search-ui.ceb6ee997e.js",
+  "app/core/search-ui.b7c5d1f5e0.js",
   "app/core/sw-register.a926a8e5e9.js",
   "app/core/theme-mode.ff76841c8a.js",
   "app/search/engine.js",
   "app/search/worker.js",
-  "app/theme/ink/css/theme.86f7593448.css",
-  "app/theme/ink/css/typography.0af5821fdd.css",
+  "app/theme/ink/css/theme.c5d31ff153.css",
+  "app/theme/ink/css/typography.342749deba.css",
   "app/theme/ink/js/background.f357049189.js",
   "app/theme/ink/js/particles.4cd8497376.js",
   "app/theme/ink/js/theme.6e4552e5a1.js",
