@@ -1,22 +1,23 @@
-/* Inkstone Service Worker · build 10b17abd */
-const VERSION = 'inkstone-10b17abd';
+/* Inkstone Service Worker · build 51f55465 */
+const VERSION = 'inkstone-51f55465';
 const PRECACHE = [
   "index.html",
   "app/database/blog-list.json",
-  "app/css/base.eae2cd618c.css",
-  "app/core/app.e5b83762dd.js",
-  "app/core/enhance.149f04836d.js",
-  "app/core/reading.c86162a9d4.js",
-  "app/core/search-ui.b7c5d1f5e0.js",
+  "app/css/base.3e7336ce2b.css",
+  "app/core/app.fc9adb74c1.js",
+  "app/core/enhance.be2015eb5a.js",
+  "app/core/nav.d2bd2756cd.js",
+  "app/core/reading.62cc61c74a.js",
+  "app/core/search-ui.cdc570d5e8.js",
   "app/core/sw-register.a926a8e5e9.js",
-  "app/core/theme-mode.ff76841c8a.js",
+  "app/core/theme-mode.977f523551.js",
   "app/search/engine.js",
   "app/search/worker.js",
   "app/theme/ink/css/theme.c5d31ff153.css",
   "app/theme/ink/css/typography.38b04656e2.css",
   "app/theme/ink/js/background.f357049189.js",
   "app/theme/ink/js/particles.4cd8497376.js",
-  "app/theme/ink/js/theme.6e4552e5a1.js",
+  "app/theme/ink/js/theme.e19e27a04b.js",
   "app/assets/icon-192.png",
   "app/assets/icon-512.png",
   "app/assets/icon.svg"
@@ -40,8 +41,9 @@ self.addEventListener('fetch', (event) => {
   const request = event.request;
   if (request.method !== 'GET' || new URL(request.url).origin !== self.location.origin) return;
 
-  // 导航请求：网络优先，离线回退缓存
-  if (request.mode === 'navigate') {
+  // 导航请求（含站内软导航 X-Ink-Nav）：网络优先，离线回退缓存
+  const isNavigation = request.mode === 'navigate' || request.headers.get('x-ink-nav') === '1';
+  if (isNavigation) {
     event.respondWith(
       fetch(request)
         .then((response) => {
