@@ -41,7 +41,44 @@
   ],
   "backlinks": [],
   "outbound": [],
-  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/first-light/index.md",
-  "parts": [],
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/first-light/readme.md",
+  "parts": [
+    {
+      "id": "first-light",
+      "title": "开站",
+      "subtitle": "为什么又写一个博客",
+      "excerpt": "平台换过好几个，文章搬来搬去，最后剩下的只有一堆打不开的链接。 所以这次换个思路：内容就是文件，文件就在仓库里。 写作 = 编辑 发布 = 归档 = GitHub Actions 构建 并推到 没有后台，没有数据库，没有「导出为…",
+      "author": "曦儿",
+      "date": "2024-03-16",
+      "updated": "2024-03-16",
+      "timestamp": "2024-03-16T00:00:00",
+      "tags": [
+        "随笔",
+        "建站"
+      ],
+      "categories": [
+        "随笔"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/first-light/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 119,
+      "minutes": 1,
+      "hasCot": false,
+      "cot": [],
+      "toc": [],
+      "aliases": []
+    }
+  ],
   "assets": []
 }

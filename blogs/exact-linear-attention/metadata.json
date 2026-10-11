@@ -157,8 +157,159 @@
   ],
   "backlinks": [],
   "outbound": [],
-  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/exact-linear-attention/index.md",
-  "parts": [],
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/exact-linear-attention/readme.md",
+  "parts": [
+    {
+      "id": "exact-linear-attention",
+      "title": "Exact Linear Attention",
+      "subtitle": "从精确可分解核函数到线性复杂度注意力 —— 推导、工程改造与实验验证",
+      "excerpt": "线性注意力长期被视为把 Transformer 扩展到长序列的关键方向。本文给出一种\"精确\"线性注意力：利用核函数的精确可分解性，把 $O(L^2)$ 注意力改写为 $O(L)$ 的线性形式而不损失精度，并进一步讨论 FFN 可解释性、Hyper-Link 残差替换与\"质记忆\"模块，最后把方法推广到视觉模型。",
+      "author": "Yauntyours",
+      "date": "2026-06-04",
+      "updated": "2026-06-04",
+      "timestamp": "2026-06-04T00:00:00",
+      "tags": [
+        "线性注意力",
+        "注意力机制",
+        "MoE",
+        "记忆模块",
+        "YOLO",
+        "视觉模型",
+        "核函数"
+      ],
+      "categories": [
+        "论文",
+        "深度学习"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "blogs/exact-linear-attention/assets/Introduce.webp",
+      "lang": "zh-CN",
+      "url": "blogs/exact-linear-attention/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": true,
+      "featured": true,
+      "weight": 99.99,
+      "series": "Exact Linear Attention",
+      "collections": [],
+      "words": 4953,
+      "minutes": 12,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "Table of Contents",
+          "anchor": "table-of-contents",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "1. Introduction",
+          "anchor": "1-introduction",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "2. Regarding Which Kernel Function is Suitable for This Task",
+          "anchor": "2-regarding-which-kernel-function-is-suitable-for-this-task",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "3. Exact Linear Attention Formulation",
+          "anchor": "3-exact-linear-attention-formulation",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "4. How to Construct Your Own Attention Kernel",
+          "anchor": "4-how-to-construct-your-own-attention-kernel",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "5. Challenges in Engineering Construction",
+          "anchor": "5-challenges-in-engineering-construction",
+          "children": [
+            {
+              "level": 3,
+              "text": "5.1 The Dilemma of FFN",
+              "anchor": "5-1-the-dilemma-of-ffn",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.2 Hyperlink-Based Residual Replacement for Degradation Eradication",
+              "anchor": "5-2-hyperlink-based-residual-replacement-for-degradation-eradication",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.3 How Memory Works",
+              "anchor": "5-3-how-memory-works",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "6. Experiments",
+          "anchor": "6-experiments",
+          "children": [
+            {
+              "level": 3,
+              "text": "6.1 No Memory Training Comparison",
+              "anchor": "6-1-no-memory-training-comparison",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.2 Memory Additional",
+              "anchor": "6-2-memory-additional",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.3 Long-range Training",
+              "anchor": "6-3-long-range-training",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "7. Extend to Vision Models",
+          "anchor": "7-extend-to-vision-models",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "8. Exploratory Works",
+          "anchor": "8-exploratory-works",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Acknowledgments",
+          "anchor": "acknowledgments",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "References",
+          "anchor": "references",
+          "children": []
+        }
+      ],
+      "aliases": [
+        "ela",
+        "exact-linear-attention-paper"
+      ]
+    }
+  ],
   "assets": [
     {
       "name": "assets/Architecture.png",

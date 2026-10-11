@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-11T07:55:00Z</lastBuildDate>
+<lastBuildDate>2026-10-11T09:00:24Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -463,7 +463,7 @@
 </div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><ul>
 <li><strong>使用手册</strong>（<a href="../../blogs/agent-system-design/cell-cpp-zh/app.html" title="wikilink">cell.cpp 中文说明</a>）是横向的，回答&quot;它有什么、
 怎么用、边界在哪&quot;，是一份可以直接查的参考。</li>
-<li><strong>设计解读</strong>（<a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">cell.cpp 设计解读</a>）是纵向的，逐个拆解机制
+<li><strong>设计解读</strong>（<span class="wikilink--missing" title="未找到：设计的解读">cell.cpp 设计解读</span>）是纵向的，逐个拆解机制
 背后的取舍与踩过的坑。</li>
 </ul>
 </div></div></li><li class="cot__step" data-step="3" data-title=""><span class="cot__index" aria-hidden="true">03</span><div class="cot__step-body"><div class="cot__step-content"><p>主文只做一件事：给出骨架和判断标准，把展开交给子文，并说明每种读者
@@ -491,25 +491,25 @@
 <td><strong>控制平面</strong></td>
 <td>一次对话如何开始、被叫停、被续接、被压缩？</td>
 <td>代理循环、中断状态、上下文压缩、按目录会话</td>
-<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第九节</td>
+<td><span class="wikilink--missing" title="未找到：设计的解读">设计的解读</span> 第九节</td>
 </tr>
 <tr>
 <td><strong>能力平面</strong></td>
 <td>模型如何动手，且多个执行体不互相踩脚？</td>
 <td>工具注册表与两段式调度、read-before-edit、Teamwork、通知总线</td>
-<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第四、七、八节</td>
+<td><span class="wikilink--missing" title="未找到：设计的解读">设计的解读</span> 第四、七、八节</td>
 </tr>
 <tr>
 <td><strong>信任平面</strong></td>
 <td>&quot;能动&quot;如何不等于&quot;可为所欲为&quot;？</td>
 <td>沙箱模式、路径门禁、人工确认、注入清理、凭据保险库</td>
-<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第十节</td>
+<td><span class="wikilink--missing" title="未找到：设计的解读">设计的解读</span> 第十节</td>
 </tr>
 <tr>
 <td><strong>底座</strong></td>
 <td>协议与 I/O 上有哪些只有跑起来才会撞的坑？</td>
 <td>SSE 增量解析、流式索引上界、原子写入、输入归一化</td>
-<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第二、三、十一至十四节</td>
+<td><span class="wikilink--missing" title="未找到：设计的解读">设计的解读</span> 第二、三、十一至十四节</td>
 </tr>
 </tbody>
 </table></div>
@@ -666,7 +666,7 @@ Latin-1 重音折回基本字母、西里尔/希腊同形字折成 ASCII 近似�
 <hr />
 <h2 id="五-底座-只有跑起来才会撞到的坑">五、底座：只有跑起来才会撞到的坑</h2>
 <p>这一层的知识点密度最高，也最难靠&quot;读文档&quot;获得。它们分散在
-<a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 的第二、三、十一至十四节，这里只列结论。</p>
+<span class="wikilink--missing" title="未找到：设计的解读">设计的解读</span> 的第二、三、十一至十四节，这里只列结论。</p>
 <h3 id="5-1-sse-用游标-不要-erase">5.1 SSE：用游标，不要 erase</h3>
 <p>流式解析用 <code>std::generator</code> 做零拷贝事件生成器，缓冲区<strong>只追加</strong>，
 <code>consumed</code> 游标记录已消费位置，只有游标超过 64KB 时才真正删前缀。每秒几百个
@@ -766,7 +766,7 @@ curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库�
 <li><a href="../../blogs/agent-system-design/cell-cpp-zh/app.html" title="wikilink">cell.cpp 中文说明</a> —— 完整的功能参考：命令行选项、斜杠命令、九个
 工具、Teamwork 与通知的完整用法、配置文件字段、运行时数据布局、安全模型的
 逐条说明、自测覆盖范围。<strong>当你想知道&quot;某个功能怎么用&quot;时查这一篇。</strong></li>
-<li><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">cell.cpp 设计解读</a> —— 逐个机制的设计剖析：SSE 解析、流式索引、
+<li><span class="wikilink--missing" title="未找到：设计的解读">cell.cpp 设计解读</span> —— 逐个机制的设计剖析：SSE 解析、流式索引、
 两段式调度、read-before-edit、注入清理、子代理编排、通知总线、中断恢复、
 沙箱的诚实边界、原子写入、系统消息折叠、数字解析、正则缓存、测试策略。
 <strong>当你想知道&quot;为什么这么设计&quot;时读这一篇。</strong></li>
@@ -1028,7 +1028,7 @@ curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库�
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="82587602">
+<div class="mermaid" data-src-hash="16500059">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1041,7 +1041,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="78310086">
+<div class="mermaid" data-src-hash="98508031">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker

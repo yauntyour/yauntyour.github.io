@@ -251,6 +251,240 @@
   "parent": "agent-system-design",
   "parts": [
     {
+      "id": "agent-system-design",
+      "title": "Agent系统设计的骨架",
+      "subtitle": "以 cell.cpp 为样本，拆解一个单文件 AI Coding Agent在控制、能力、信任与底座四层上的取舍",
+      "excerpt": "接上模型 API 只需要几百行，能让它在真实代码库里安全地跑一整天却需要一整套取舍。本文以 cell.cpp 这个单文件 C++26 代理为样本，把控制、能力、信任与底座四层拆开来看。",
+      "author": "Yauntyours",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00",
+      "tags": [
+        "AI Agent",
+        "系统设计",
+        "C++",
+        "提示注入",
+        "沙箱",
+        "多代理",
+        "流式协议",
+        "工程哲学"
+      ],
+      "categories": [
+        "工程"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "Agent系统设计",
+      "collections": [],
+      "words": 5031,
+      "minutes": 13,
+      "hasCot": true,
+      "cot": [
+        {
+          "title": "为什么按\"层\"而不是按\"功能\"组织",
+          "summary": "",
+          "hidden": false,
+          "steps": [
+            {
+              "index": 1,
+              "title": "",
+              "note": ""
+            },
+            {
+              "index": 2,
+              "title": "",
+              "note": ""
+            },
+            {
+              "index": 3,
+              "title": "",
+              "note": ""
+            }
+          ]
+        },
+        {
+          "title": "主文与子文的分工",
+          "summary": "",
+          "hidden": false,
+          "steps": [
+            {
+              "index": 1,
+              "title": "",
+              "note": ""
+            },
+            {
+              "index": 2,
+              "title": "",
+              "note": ""
+            },
+            {
+              "index": 3,
+              "title": "",
+              "note": ""
+            }
+          ]
+        }
+      ],
+      "toc": [
+        {
+          "level": 2,
+          "text": "一、四层骨架",
+          "anchor": "一-四层骨架",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "二、控制平面：让一次对话可以被叫住",
+          "anchor": "二-控制平面-让一次对话可以被叫住",
+          "children": [
+            {
+              "level": 3,
+              "text": "2.1 循环本身没有上限",
+              "anchor": "2-1-循环本身没有上限",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.2 中断是一种状态，不是一次异常",
+              "anchor": "2-2-中断是一种状态-不是一次异常",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.3 压缩是显式动作，不是自动降级",
+              "anchor": "2-3-压缩是显式动作-不是自动降级",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.4 会话是一个目录，不是一个数组",
+              "anchor": "2-4-会话是一个目录-不是一个数组",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "三、能力平面：让\"能动\"不等于\"乱来\"",
+          "anchor": "三-能力平面-让-能动-不等于-乱来",
+          "children": [
+            {
+              "level": 3,
+              "text": "3.1 Policy 与 Phase 是两个正交维度",
+              "anchor": "3-1-policy-与-phase-是两个正交维度",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.2 read-before-edit：把模型的不确定性挡在文件之外",
+              "anchor": "3-2-read-before-edit-把模型的不确定性挡在文件之外",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.3 子代理编排：阶段、门控与文件租约",
+              "anchor": "3-3-子代理编排-阶段-门控与文件租约",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.4 零 token 的等待是一个特性",
+              "anchor": "3-4-零-token-的等待是一个特性",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "四、信任平面：诚实地说明\"不做什么\"",
+          "anchor": "四-信任平面-诚实地说明-不做什么",
+          "children": [
+            {
+              "level": 3,
+              "text": "4.1 沙箱只管路径，而且明说了",
+              "anchor": "4-1-沙箱只管路径-而且明说了",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.2 注入防御：先归一化，再匹配",
+              "anchor": "4-2-注入防御-先归一化-再匹配",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.3 凭据：让 fail-closed 成为默认行为",
+              "anchor": "4-3-凭据-让-fail-closed-成为默认行为",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "五、底座：只有跑起来才会撞到的坑",
+          "anchor": "五-底座-只有跑起来才会撞到的坑",
+          "children": [
+            {
+              "level": 3,
+              "text": "5.1 SSE：用游标，不要 erase",
+              "anchor": "5-1-sse-用游标-不要-erase",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.2 流式索引由服务器控制",
+              "anchor": "5-2-流式索引由服务器控制",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.3 原子替换的细节",
+              "anchor": "5-3-原子替换的细节",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.4 输入归一化的三个例子",
+              "anchor": "5-4-输入归一化的三个例子",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "六、七条可推广的原则",
+          "anchor": "六-七条可推广的原则",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "七、动手清单",
+          "anchor": "七-动手清单",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "延伸阅读",
+          "anchor": "延伸阅读",
+          "children": []
+        }
+      ],
+      "aliases": [
+        "cell-cpp",
+        "agent-design",
+        "blogs/agent-system-design"
+      ]
+    },
+    {
       "id": "agent-system-design/cell-cpp-zh",
       "title": "cell.cpp",
       "subtitle": "",
@@ -503,7 +737,7 @@
       "parent": "agent-system-design"
     },
     {
-      "id": "agent-system-design/设计的解读",
+      "id": "agent-system-design/soul-of-the-design",
       "title": "cell.cpp：一个单文件 C++26 AI Coding Agent的设计哲学",
       "subtitle": "",
       "excerpt": "一个 8000 行的翻译单元里，藏着一个完整的 AI Coding Agent：三种 API 风格、九个工具、多代理协作、跨进程消息总线、加密凭据保管库、路径沙箱、提示注入防御——全部在同一个 文件里。 为什么是\"单文件\"？ 现代 AI…",
@@ -517,7 +751,7 @@
       "markers": [],
       "cover": "",
       "lang": "zh-CN",
-      "url": "blogs/agent-system-design/设计的解读/app.html",
+      "url": "blogs/agent-system-design/soul-of-the-design/app.html",
       "draft": false,
       "hidden": true,
       "private": false,
@@ -639,7 +873,7 @@
     }
   ],
   "prev": "agent-system-design",
-  "next": "设计的解读",
+  "next": "soul-of-the-design",
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/agent-system-design/cell.cpp-zh.md",
   "assets": []
 }

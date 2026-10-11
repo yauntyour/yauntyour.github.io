@@ -42,7 +42,44 @@
   ],
   "backlinks": [],
   "outbound": [],
-  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/zero-system/index.md",
-  "parts": [],
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/zero-system/readme.md",
+  "parts": [
+    {
+      "id": "zero-system",
+      "title": "最小系统的设计原理",
+      "subtitle": "如何优雅地设计一个极客风格的系统",
+      "excerpt": "一般而言，根据钱老的《工程控制论》思想，一个系统可以由以下部分组成： 其基本结构可表示为： 其中： 比较器：计算偏差，例如 e=r−ye=r−y； 控制器：根据偏差生成控制信号； 执行机构：把控制信号转化为实际作用；…",
+      "author": "Yauntyours",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00",
+      "tags": [
+        "随笔",
+        "工程哲学"
+      ],
+      "categories": [
+        "随笔"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/zero-system/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 445,
+      "minutes": 1,
+      "hasCot": false,
+      "cot": [],
+      "toc": [],
+      "aliases": []
+    }
+  ],
   "assets": []
 }
