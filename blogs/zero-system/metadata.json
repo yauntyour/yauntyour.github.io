@@ -37,7 +37,8 @@
   "next": "hello-inkstone",
   "related": [
     "quiet-machines",
-    "first-light"
+    "first-light",
+    "agent-system-design"
   ],
   "backlinks": [],
   "outbound": [],

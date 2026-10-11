@@ -255,10 +255,7 @@
   "prev": "zero-system",
   "next": "quiet-machines",
   "related": [
-    "agent-system-design",
-    "zero-system",
-    "exact-linear-attention",
-    "quiet-machines"
+    "agent-system-design"
   ],
   "backlinks": [],
   "outbound": [],

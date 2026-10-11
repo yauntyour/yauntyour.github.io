@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-11T06:38:12Z</lastBuildDate>
+<lastBuildDate>2026-10-11T07:14:46Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -452,7 +452,328 @@
 </li>
 </ol>
 ]]></description></item>
-<item><title>agent-system-design</title><link>https://yaunt.github.io/blog/blogs/agent-system-design/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/agent-system-design/app.html</guid><pubDate>2026-10-11T12:10:06Z</pubDate><author>Yauntyours</author><description><![CDATA[]]></description></item>
+<item><title>代理系统设计的骨架</title><link>https://yaunt.github.io/blog/blogs/agent-system-design/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/agent-system-design/app.html</guid><pubDate>2026-10-11T00:00:00Z</pubDate><author>Yauntyours</author><category>AI Agent</category><category>系统设计</category><category>C++</category><category>提示注入</category><category>沙箱</category><category>多代理</category><category>流式协议</category><category>工程哲学</category><description><![CDATA[<section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么按&quot;层&quot;而不是按&quot;功能&quot;组织</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>读完 cell.cpp 的两份材料之后，最容易的写法是把它复述一遍：有哪些工具、
+有哪些命令、有哪些安全检查。那样写出来的文章和它的 README 没有区别。</p>
+</div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><p>换一个切法就清楚了。工具、命令、配置都是<strong>表层现象</strong>，换一套实现就变；
+但&quot;一次对话可以被叫停并续接&quot;&quot;多个执行体不会互相踩脚&quot;&quot;模型读到的字节都
+经过归一化&quot;这几件事，是<strong>任何</strong>代理系统都要面对的结构性问题。</p>
+</div></div></li><li class="cot__step" data-step="3" data-title=""><span class="cot__index" aria-hidden="true">03</span><div class="cot__step-body"><div class="cot__step-content"><p>所以本文的主干是四层：控制、能力、信任、底座。每层都只回答一个问题，
+具体机制放在子文章里展开。</p>
+</div></div></li></ol></div></section><section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">主文与子文的分工</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>两篇子文章各有立场：</p>
+</div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><ul>
+<li><strong>使用手册</strong>（<a href="../../blogs/agent-system-design/cell-cpp-zh/app.html" title="wikilink">cell.cpp 中文说明</a>）是横向的，回答&quot;它有什么、
+怎么用、边界在哪&quot;，是一份可以直接查的参考。</li>
+<li><strong>设计解读</strong>（<a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">cell.cpp 设计解读</a>）是纵向的，逐个拆解机制
+背后的取舍与踩过的坑。</li>
+</ul>
+</div></div></li><li class="cot__step" data-step="3" data-title=""><span class="cot__index" aria-hidden="true">03</span><div class="cot__step-body"><div class="cot__step-content"><p>主文只做一件事：给出骨架和判断标准，把展开交给子文，并说明每种读者
+该从哪一篇读起。</p>
+</div></div></li></ol></div></section><blockquote>
+<p>一个翻译单元里塞进三种 API 风格、九个工具、多代理编排、跨进程消息总线、
+加密凭据保险库、路径沙箱与提示注入防御。本文不从功能清单开始，而是从
+<strong>这些功能分别解决了哪一类结构性问题</strong>开始。</p>
+</blockquote>
+<hr />
+<h2 id="一-四层骨架">一、四层骨架</h2>
+<p>把一个可用的 Agent 拆开看，它大致由四层组成。层与层的区别不在于依赖顺序，
+而在于<strong>它们各自回答什么问题</strong>。</p>
+<div class="table-wrap"><table class="post-table">
+<thead>
+<tr>
+<th>层</th>
+<th>回答的问题</th>
+<th>代表机制</th>
+<th>详见</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>控制平面</strong></td>
+<td>一次对话如何开始、被叫停、被续接、被压缩？</td>
+<td>代理循环、中断状态、上下文压缩、按目录会话</td>
+<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第九节</td>
+</tr>
+<tr>
+<td><strong>能力平面</strong></td>
+<td>模型如何动手，且多个执行体不互相踩脚？</td>
+<td>工具注册表与两段式调度、read-before-edit、Teamwork、通知总线</td>
+<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第四、七、八节</td>
+</tr>
+<tr>
+<td><strong>信任平面</strong></td>
+<td>&quot;能动&quot;如何不等于&quot;可为所欲为&quot;？</td>
+<td>沙箱模式、路径门禁、人工确认、注入清理、凭据保险库</td>
+<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第十节</td>
+</tr>
+<tr>
+<td><strong>底座</strong></td>
+<td>协议与 I/O 上有哪些只有跑起来才会撞的坑？</td>
+<td>SSE 增量解析、流式索引上界、原子写入、输入归一化</td>
+<td><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 第二、三、十一至十四节</td>
+</tr>
+</tbody>
+</table></div>
+<p>四层里，<strong>控制平面和信任平面决定了系统是否&quot;能上线&quot;，能力平面决定了它是否
+&quot;有用&quot;，底座决定了它是否&quot;不会半夜崩掉&quot;</strong>。一个只做了能力平面的 demo 是玩具；
+一个只做了信任平面而没有控制平面的系统，会在用户按 Esc 时丢失整轮对话。</p>
+<p>这份骨架也解释了为什么 cell.cpp 值得作为样本：它把四层都做了，而且明确
+标注了哪些是刻意的取舍、哪些是明说的局限。</p>
+<hr />
+<h2 id="二-控制平面-让一次对话可以被叫住">二、控制平面：让一次对话可以被叫住</h2>
+<h3 id="2-1-循环本身没有上限">2.1 循环本身没有上限</h3>
+<p>代理循环的终止条件不是&quot;最多 N 轮&quot;，而是<strong>模型在某一轮不再发起工具调用</strong>、
+工具被拒绝、用户取消或发生错误。这看似简单，但它决定了系统不能对长任务做
+提前截断——而这正是编码代理和问答代理最大的行为差异。</p>
+<p>代价是必须有别的机制来接管&quot;提前结束&quot;。cell.cpp 用两条路径覆盖它。</p>
+<h3 id="2-2-中断是一种状态-不是一次异常">2.2 中断是一种状态，不是一次异常</h3>
+<p>用户按 Esc，模型可能已经吐了半段文本、半个工具调用。朴素的处理是丢弃整轮，
+但那会让长任务前功尽弃。cell.cpp 的处理是把它当作一个<strong>可持久化的状态</strong>：</p>
+<ol>
+<li>已完整到达的 token 原样保留，截断到最后一个完整流事件——不会补全，也不会
+补造半个字符；</li>
+<li>仍在发出的工具调用被整体丢弃，因为它的参数通常是截断的 JSON，留着会让
+下一次请求对每个 provider 都变成非法的（有 <code>tool_call</code> 没有对应结果）；</li>
+<li>追加一条 system 消息说明原因，让模型知道上一轮为什么停；</li>
+<li>状态写进会话目录下的 <code>interrupt.json</code>，重启后仍可恢复。</li>
+</ol>
+<p><code>/reload</code> 随后只做一件事：把现状 transcript 原样再发一遍。partial reply 和
+中断说明已经在里面了，所以它<strong>不注入任何新内容</strong>——这恰好保证了模型是在接续，
+而不是在重新开始。</p>
+<blockquote>
+<p>值得单独一提的是 Anthropic 的 thinking 块需要签名才能重放。中断在思考中途
+产生的无签名块会被丢弃，有签名的保留。这不是过度设计，而是一个真实的
+协议约束被提前想到了。</p>
+</blockquote>
+<h3 id="2-3-压缩是显式动作-不是自动降级">2.3 压缩是显式动作，不是自动降级</h3>
+<p>触发条件有两个：上下文溢出报错时压缩一次并在同一轮内重试（不计作失败尝试）；
+以及长时间工具密集型轮次后自动压缩。两者走同一个 <code>compact()</code> 路径。</p>
+<p>几个细节体现了&quot;显式&quot;的思路：每条消息先拆成对话文本与推理两部分、各截断到
+400 字符，分别送给压缩模型（可以用与聊天模型不同的模型），两份摘要再合成一条
+system 消息；<strong>最近一条用户消息被保留</strong>——因为只含 system 消息的对话会被很多
+聊天模板直接拒绝（<code>No user query found in messages</code>），留着它压缩结果才至少
+能撑起一次真实轮次。</p>
+<p>压缩前会先把完整 transcript 归档到 <code>saved/msg-&lt;time&gt;.jsonl</code>。<strong>归档失败就不压缩</strong>。
+这个顺序保证了压缩永远不会导致数据丢失。</p>
+<h3 id="2-4-会话是一个目录-不是一个数组">2.4 会话是一个目录，不是一个数组</h3>
+<p>会话 id 是 <code>&lt;cwd-key&gt;-&lt;unix-millis&gt;-&lt;8 hex&gt;</code>，cwd key 是规范化工作目录 SHA-256 的
+前 16 位。每个会话是一个文件夹，里面放着 <code>messages.jsonl</code>、<code>teamworks.json</code>、
+<code>interrupt.json</code>、<code>notices/</code> 和 <code>saved/</code>。</p>
+<p>这个选择的收益是<strong>恢复路径是确定的</strong>：切换会话直接跟随它的 cwd，不需要额外的
+映射逻辑；删除会话就是删目录，不会有孤儿记录；压缩归档和中断状态天然与会话
+同生命周期。</p>
+<p>配套的写入策略是合并 + 原子替换：按路径合并提交，后台线程落盘，每次写入先写
+<code>&lt;name&gt;.tmp</code>、刷到存储设备、再 rename 覆盖。<strong>崩溃永远不会留下一个被下次启动
+静默读成空的截断文件。</strong> <code>flush()</code> 是真正的持久性屏障——<code>/save</code>、<code>/session</code>、
+<code>/compact</code> 和退出路径都会先调它。</p>
+<hr />
+<h2 id="三-能力平面-让-能动-不等于-乱来">三、能力平面：让&quot;能动&quot;不等于&quot;乱来&quot;</h2>
+<h3 id="3-1-policy-与-phase-是两个正交维度">3.1 Policy 与 Phase 是两个正交维度</h3>
+<p>一次助手消息里可能有多个工具调用。cell.cpp 把它们拆成两个 pass：</p>
+<ul>
+<li><strong>Pass 1（并发）</strong>：所有只读工具（<code>ls</code> / <code>read</code> / <code>rg</code> / <code>find</code>）提交到共享
+线程池并发执行；</li>
+<li><strong>Pass 2（顺序）</strong>：<code>write</code> / <code>edit</code> 必须等所有读完成，<code>exec</code> 需要确认，
+<code>tw</code> 会阻塞等待子代理。</li>
+</ul>
+<p>关键在于把两个维度分开建模：<strong>Policy（Deny / Ask / Allow）回答&quot;能不能跑&quot;，
+Phase（Concurrent / Deferred）回答&quot;什么时候跑&quot;</strong>。混成一个枚举，之后每加一个
+工具都要重新定义组合语义。</p>
+<p>结果始终按原始 <code>tool_call</code> 顺序写回 transcript，因为模型期待结果与请求同序。</p>
+<h3 id="3-2-read-before-edit-把模型的不确定性挡在文件之外">3.2 read-before-edit：把模型的不确定性挡在文件之外</h3>
+<p>编辑工具最常见的失败模式不是权限被拒，而是<strong>模型凭训练记忆编造文件内容</strong>，
+然后去 <code>edit</code> 一个并不存在的字符串。cell.cpp 的解法是记录每一次 <code>read</code> 返回的
+行范围，<code>edit</code> 前检查目标行是否落在已读区间内：</p>
+<ul>
+<li>读过 [1,10] 和 [20,30] 之后编辑第 15 行会被<strong>拒绝</strong>，尽管两个范围都记录了；</li>
+<li>可见上下文一变（<code>/clear</code>、<code>/new</code>、<code>/session</code>、<code>/compact</code>），日志就清空——
+之前那次读在模型眼前已经不存在了；</li>
+<li>从带行号的 <code>read</code> 输出里复制搜索块必然带尾随换行，但文件可能没有，所以有一条
+&quot;去掉换行重试&quot;的分支。</li>
+</ul>
+<p>这条约束把&quot;模型必须先看&quot;从提示词里的建议变成了工具层的硬约束。</p>
+<h3 id="3-3-子代理编排-阶段-门控与文件租约">3.3 子代理编排：阶段、门控与文件租约</h3>
+<p>Teamwork 允许主代理创建作业，子任务可以组织成<strong>命名阶段的工作流</strong>：阶段顺序
+执行，阶段内串行或并行；并行走共享线程池（上限 <code>thread_pool_size</code>，默认 16），
+而不是每个子代理一个 <code>std::async</code>。</p>
+<p>三个设计值得单独说：</p>
+<p><strong>后台运行必须在池外。</strong> <code>/teamworks run_bg</code> 起专用 runner 线程，因为并行阶段
+会把 worker 提交到池里再阻塞等待——runner 若在池中就会死锁。池托管的运行
+永远不死锁，退出时 join。</p>
+<p><strong>Gate 是流程节点，不是确认弹窗。</strong> 带 <code>gate: true</code> 的阶段结束后作业转为
+<code>waiting</code> 并发通知，监督者审查报告后再 <code>run</code> 恢复。这让&quot;人在回路&quot;成为工作流
+里一个自然的阶段，而不是散落各处的特殊分支。</p>
+<p><strong>文件租约把所有权做成了显式规则。</strong> 子代理始终可以创建新文件（创建即归属），
+但改动已存在文件需要主代理在 <code>editable</code> 里显式授权，且必须同时给出
+<code>edit_rules</code>。每一次对授权文件的修改都会触发一次<strong>监督审查</strong>——一次独立的
+LLM 请求，携带路径、工具参数、文件当前内容和即将产生的结果，要求模型回复
+批准或拒绝。</p>
+<p>审查是 fail-closed 的：<strong>缺失或失败的审查一律拒绝，绝不静默放行</strong>。被拒的子
+代理会拿到裁决和原因作为工具结果，可以修正后重试（每个子代理最多 8 次审查）。
+租约锁在发出审查请求之前就释放，所以多个子代理的审查互不排队。</p>
+<h3 id="3-4-零-token-的等待是一个特性">3.4 零 token 的等待是一个特性</h3>
+<p>监督者需要知道子代理进度，但<strong>轮询会烧 token</strong>。cell.cpp 的 notice 总线让等待
+变成零成本的原子操作：</p>
+<ul>
+<li>发送方把 JSON 文件原子写入目标会话的 <code>notices/pending/</code>；</li>
+<li>进程内发送通过条件变量立即唤醒，跨进程发送靠约 0.7 秒的目录重扫发现；</li>
+<li><code>/notices wait</code> 阻塞在条件变量上，<strong>空闲时不发出任何 LLM 请求</strong>；</li>
+<li>待处理通知还会在每次 LLM 轮次前自动排空，所以监督者永远不必主动轮询。</li>
+</ul>
+<p>还有一个容易被忽略的安全决定：<strong>通知 id 来自文件名而不是文件内容</strong>。如果 id
+来自 JSON，恶意发送者可以写 <code>&quot;id&quot;: &quot;../../../victim&quot;</code>，排空时的删除操作就被引到
+了 <code>pending/</code> 目录之外。用文件名做 id，路径穿越在构造上就不可能。</p>
+<hr />
+<h2 id="四-信任平面-诚实地说明-不做什么">四、信任平面：诚实地说明&quot;不做什么&quot;</h2>
+<h3 id="4-1-沙箱只管路径-而且明说了">4.1 沙箱只管路径，而且明说了</h3>
+<p>cell.cpp 的 <code>check_exec</code> 只做两件事：拒绝 <code>..</code> 遍历，拒绝引用敏感路径
+（<code>/.crypt</code>、<code>/.key</code>、<code>/config.json</code>、<code>/sessions/</code>、<code>/logs/</code>）。它<strong>不解析命令名，
+不解码 base64 载荷，也不阻止网络出口</strong>——<code>python3 -c &quot;exec(base64…)&quot;</code> 当然能
+跑。</p>
+<p>README 的 Implementation notes 专门有一段讲这件事：</p>
+<blockquote>
+<p>The sandbox is <strong>path-only</strong>: <code>box::check_exec</code> / <code>box::check</code> do <strong>not</strong> parse
+command names, decode encoded payloads, or block network egress by binary name.</p>
+</blockquote>
+<p>这种诚实是有价值的。很多安全文档会暗示&quot;我们阻止了网络出口&quot;，实际只是过滤了
+几个命令名——那种承诺比没有承诺更危险，因为它让人以为可以少问一次。</p>
+<p>真正的威胁模型是：<strong>不可信的代理运行在可信的主机上，命令由用户确认（或在
+autoallow 模式下由 LLM 决定），沙箱负责的是防路径逃逸与防意外泄密。</strong> 六层
+防线叠起来才构成防御深度：沙箱模式 → 路径门禁 → 人工确认 → 高风险二次确认
+→ 输出加固 → 凭据保险库。</p>
+<h3 id="4-2-注入防御-先归一化-再匹配">4.2 注入防御：先归一化，再匹配</h3>
+<p><code>exec</code> 的输出里可能嵌着&quot;ignore all previous instructions&quot;。朴素字符串匹配会被
+轻松绕过：下划线连接、多余空格、西里尔字母 і、零宽空格、跨行拆分。</p>
+<p>cell.cpp 的做法是<strong>先把每行归一化成规范 ASCII 再匹配</strong>：全角折成半角、
+Latin-1 重音折回基本字母、西里尔/希腊同形字折成 ASCII 近似、删除零宽与双向
+标记、标点折成空格。再把最多 6 个相邻行拼成窗口跑一遍，捕捉跨行拆分。</p>
+<p>两道便宜的优化让它不至于拖慢正常路径：每个指纹和正则都要求至少命中一个词干
+（<code>ignor</code> / <code>disregard</code> / <code>overrid</code>），只有命中词干才进正则；跨行窗口也只在有
+词干提示时才拼。</p>
+<p>除此之外还有一层<strong>包装</strong>：<code>wrap_tool_output</code> 给每个结果套上带工具名和路径标记
+的显式不受信任边界标签，正文中任何伪造这个闭合标签的尝试都会被转义——注入内容
+无法伪造嵌套的&quot;已授权&quot;工具块。</p>
+<p>注意扫描只作用于 <code>exec</code> 结果（以及从磁盘重载的带 <code>exec</code> 标记的结果）。其他工具
+在调用时已被沙箱判定为可信，只获得大小上限。这是刻意的取舍：扫描是有成本的，
+不能无差别施加。</p>
+<h3 id="4-3-凭据-让-fail-closed-成为默认行为">4.3 凭据：让 fail-closed 成为默认行为</h3>
+<p><code>.cell/.crypt</code> 是 JSON 信封，含随机 base64 盐和每键的 <code>{nonce, ct}</code>。AEAD 密钥
+用 <strong>Argon2id</strong> 从 <code>CELL_VAULT_PASSPHRASE</code> 或自动生成的 32 字节 <code>.cell/.key</code>
+派生；有 AES-NI 时用 <strong>AES-256-GCM</strong>，否则透明回退到 <strong>XChaCha20-Poly1305</strong>。
+明文存放在 <code>sodium_malloc</code> 缓冲区里，销毁时清零，比较是常量时间的。</p>
+<p>自测里有一条断言专门检查明文不出现在保险库文件中。这类&quot;失败模式要显式&quot;的
+选择贯穿全篇：审查失败即拒绝、上下文溢出走压缩而不是报错退出、配置解析失败
+用默认值并继续而不是拒绝启动。</p>
+<hr />
+<h2 id="五-底座-只有跑起来才会撞到的坑">五、底座：只有跑起来才会撞到的坑</h2>
+<p>这一层的知识点密度最高，也最难靠&quot;读文档&quot;获得。它们分散在
+<a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">设计的解读</a> 的第二、三、十一至十四节，这里只列结论。</p>
+<h3 id="5-1-sse-用游标-不要-erase">5.1 SSE：用游标，不要 erase</h3>
+<p>流式解析用 <code>std::generator</code> 做零拷贝事件生成器，缓冲区<strong>只追加</strong>，
+<code>consumed</code> 游标记录已消费位置，只有游标超过 64KB 时才真正删前缀。每秒几百个
+chunk 的响应下，<code>buf.erase(0, n)</code> 是 O(n²)。</p>
+<p>游标的代价是缓冲区可能无限增长（服务器不发换行符），所以设了 32MB 硬上限，
+超过就抛异常，由 write callback 的 catch 转成 <code>CURLE_WRITE_ERROR</code>，干净收尾。</p>
+<p>另外，<code>[DONE]</code> 哨兵前的 <code>\r</code> 必须在比较前剥掉——SSE 允许 CRLF，不剥就永远匹配不上。</p>
+<h3 id="5-2-流式索引由服务器控制">5.2 流式索引由服务器控制</h3>
+<p>OpenAI 的流式 tool call 和 Anthropic 的 content block 都带 <code>index</code>。一个恶意的
+（或有 bug 的）服务器可以发 <code>index: 999999999</code>。直接用它扩容数组，内存就没了。</p>
+<p>cell.cpp 的防御是一个常量：<code>kMaxStreamSlots = 128</code>，超出的 delta 直接丢弃。
+同时修了一个语义错误——<strong>索引缺失意味着&quot;当前调用&quot;，而不是&quot;一个新调用&quot;</strong>：</p>
+<figure class="codeblock" data-lang="c++"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">c++</span><span class="codeblock__lang">c++</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-c++ hl"><span class="cl"><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tool_calls</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">tool_calls</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></span><span class="cl"><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tc</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="s">"index"</span><span class="p">))</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num_arg</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span><span class="w"> </span><span class="s">"index"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span></span><span class="cl"></span></code></pre></div></figure>
+<p>这个 bug 曾经让某些 provider 的每个 delta 都新建一个调用，最后拼出二十个残缺的
+tool call。<strong>服务器输入永远是不可信的</strong>——这条原则在这里体现得最直接。</p>
+<h3 id="5-3-原子替换的细节">5.3 原子替换的细节</h3>
+<p>写 <code>&lt;name&gt;.tmp</code> → 刷盘 → <code>rename</code>。rename 失败会先删目标重试一次，再失败才回退
+到直接写（Windows 上文件被占用时 rename 会失败）。</p>
+<p><code>flush()</code> 里有一个值得记的 bug 类型：<code>in_flight</code> 最初是 <code>bool</code>，而 worker 线程
+和调用 <code>flush()</code> 的线程都会写它——先完成的那个会清掉标志，让 <code>flush()</code> 在还有
+写入在途时就返回。计数型状态需要的是&quot;减到零&quot;而不是&quot;置否&quot;。</p>
+<h3 id="5-4-输入归一化的三个例子">5.4 输入归一化的三个例子</h3>
+<p><strong>数字参数。</strong> LLM 经常把数字写成字符串（<code>{&quot;offset&quot;: &quot;85&quot;}</code>）。解析时必须显式
+拒绝负号（<code>strtoull(&quot;-1&quot;)</code> 不报 <code>ERANGE</code>，它会返回 <code>ULLONG_MAX</code>），并且要求
+<code>end</code> <strong>到达字符串末尾</strong>而不是 <code>*end == '\0'</code>——JSON 字符串可以内嵌 <code>\0</code>，
+<code>&quot;12\0 999&quot;</code> 会被错误接受成 12。</p>
+<p><strong>正则缓存。</strong> <code>rg</code> / <code>find</code> 有一个 64 项的 LRU 缓存。最早返回 <code>const std::regex&amp;</code>，
+在并发下是未定义行为——另一个线程在匹配过程中触发 rehash 或淘汰，引用就悬垂。
+返回 <code>shared_ptr&lt;const std::regex&gt;</code> 才正确。</p>
+<p><strong>系统消息折叠。</strong> 严格的 Chat Completions 模板只接受<strong>恰好一条 system 消息且
+在最前面</strong>，而代理会在会话中途注入 system 消息（通知、技能、中断说明、压缩摘要）。
+<code>fold_system_messages</code> 把它们按顺序合并成唯一的前导消息，在三个地方调用：
+注入后、加载技能后，以及<strong>每次请求前的最后一道防线</strong>。最后一道防线是必要的，
+因为 transcript 可能从磁盘加载，旧版本写的位置可能不规范。</p>
+<blockquote>
+<p>这一节四个例子的共同点：<strong>每一个都对应一个真实的失败模式，没有一个是&quot;以防万一&quot;。</strong></p>
+</blockquote>
+<hr />
+<h2 id="六-七条可推广的原则">六、七条可推广的原则</h2>
+<p>从上面四层里能提炼出的、比实现更耐用的东西：</p>
+<ol>
+<li>
+<p><strong>边界要物理隔离。</strong> 只有 <code>cell::plat</code> 知道 OS API，只有 <code>cell::net</code> 知道
+curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库、安全审计都变成局部
+问题——这是单文件约束最直接的收益。</p>
+</li>
+<li>
+<p><strong>不要为了统一而统一。</strong> 三种 API 各自实现客户端，在调用层分派。强行抽象成
+最小公分母，会在每个 API 的边界上制造 bug（Responses 的 <code>function_call_output</code>
+是顶层 item，Anthropic 的 <code>tool_result</code> 是完全不同的 block 类型）。</p>
+</li>
+<li>
+<p><strong>服务器输入是不可信的。</strong> 流式索引有上界、SSE 缓冲区有上界、正则有长度和
+形状限制（拒绝 <code>(a+)+</code> 这类指数回溯）、数字参数有符号和终止检查。</p>
+</li>
+<li>
+<p><strong>失败模式要显式。</strong> fail-closed 不是口号，是每个分支的默认行为：审查失败
+即拒绝，压缩前必须先归档成功，配置解析失败用默认值并继续。</p>
+</li>
+<li>
+<p><strong>持久化是状态机的核心。</strong> 会话、配置、Teamwork 存储、通知、中断状态各有
+明确的磁盘表示与原子写入路径。崩溃后能恢复的不只是数据，还有<strong>状态机的位置</strong>。</p>
+</li>
+<li>
+<p><strong>诚实比承诺更重要。</strong> 沙箱是路径的就说路径的。README 专门用一节列出代码与
+文档的差异、工具描述可能与实现漂移的地方。</p>
+</li>
+<li>
+<p><strong>零 token 的等待是特性，不是优化。</strong> 让&quot;等待&quot;成为零成本的原子操作，整个多
+代理编排的形态都会随之改变——监督者可以放心地挂在那里直到有事发生。</p>
+</li>
+</ol>
+<hr />
+<h2 id="七-动手清单">七、动手清单</h2>
+<p>如果你准备自己写一个 Agent，下面这些是本文认为<strong>不能省</strong>的部分，按优先级排列：</p>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 流式响应的缓冲区要有<strong>上界</strong>，消费要用游标而不是 <code>erase</code>；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 服务器给的流式索引要<strong>夹紧</strong>到常量上界，并且区分&quot;索引缺失&quot;与&quot;索引为零&quot;；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 编辑工具要维护<strong>已读行区间</strong>，覆盖不到的行直接拒绝，并告诉模型去读哪里；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 中断要保留已完整到达的部分，丢弃未完成的工具调用，<strong>并把原因写进对话</strong>，
+而不是只打印到终端；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 上下文压缩前先归档原文，失败就不要压缩；压缩结果要<strong>至少保留一条真实用户
+消息</strong>；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 工具调度把<strong>审批策略</strong>和<strong>执行时机</strong>分成两个维度；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 注入过滤要<strong>先归一化</strong>（同形字、零宽、全角、跨行）再匹配，并且要有便宜的
+词干预过滤；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 凭据落盘要加密，明文缓冲区要显式清零，并且<strong>写一条断言检查明文没泄漏</strong>；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 所有文件写入走<strong>临时文件 + 原子替换</strong>，<code>flush()</code> 计数用&quot;减到零&quot;而不是布尔；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 从外部读回的字符串（路径、数字、id、正则）一律按不可信处理；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 并行执行的 worker 不要放回它们正在等待的那个池里；</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox"  type="checkbox"> 文档里写清楚<strong>系统不做什么</strong>，以及每个&quot;不做什么&quot;背后的威胁模型假设。</li>
+</ul>
+<p>最后一条最容易被跳过，也最容易在半年后变成事故的根源。</p>
+<hr />
+<h2 id="延伸阅读">延伸阅读</h2>
+<ul>
+<li><a href="../../blogs/agent-system-design/cell-cpp-zh/app.html" title="wikilink">cell.cpp 中文说明</a> —— 完整的功能参考：命令行选项、斜杠命令、九个
+工具、Teamwork 与通知的完整用法、配置文件字段、运行时数据布局、安全模型的
+逐条说明、自测覆盖范围。<strong>当你想知道&quot;某个功能怎么用&quot;时查这一篇。</strong></li>
+<li><a href="../../blogs/agent-system-design/设计的解读/app.html" title="wikilink">cell.cpp 设计解读</a> —— 逐个机制的设计剖析：SSE 解析、流式索引、
+两段式调度、read-before-edit、注入清理、子代理编排、通知总线、中断恢复、
+沙箱的诚实边界、原子写入、系统消息折叠、数字解析、正则缓存、测试策略。
+<strong>当你想知道&quot;为什么这么设计&quot;时读这一篇。</strong></li>
+</ul>
+<p>两篇可以按上面的四层骨架交叉读：先在主文里定位问题属于哪一层，再到对应子文
+里看具体做法。</p>
+]]></description></item>
 <item><title>最小系统的设计原理</title><link>https://yaunt.github.io/blog/blogs/zero-system/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/zero-system/app.html</guid><pubDate>2026-10-11T00:00:00Z</pubDate><author>Yauntyours</author><category>随笔</category><category>工程哲学</category><description><![CDATA[<p>一般而言，根据钱老的《工程控制论》思想，一个系统可以由以下部分组成：</p>
 <figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">1. 被控对象（Plant / Process）</span><span class="cl">2. 参考输入（给定值、目标值）</span><span class="cl">3. 比较环节（求偏差）</span><span class="cl">4. 控制器（调节器、控制律）</span><span class="cl">5. 执行机构（执行器、驱动装置）</span><span class="cl">6. 测量环节 / 传感器（反馈检测）</span><span class="cl">7. 反馈通道</span><span class="cl">8. 输出量（被控量）</span><span class="cl">9. 扰动 / 干扰</span><span class="cl">10. 环境与边界条件</span><span class="cl"> </span></code></pre></div></figure>
 <p>其基本结构可表示为：</p>
@@ -707,7 +1028,7 @@
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="93598871">
+<div class="mermaid" data-src-hash="9035658">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -720,7 +1041,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="24247188">
+<div class="mermaid" data-src-hash="19333004">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
