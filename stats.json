@@ -1,17 +1,17 @@
 {
-  "generated": "2026-10-11T15:13:24",
-  "buildId": "3c01f661",
+  "generated": "2026-10-11T15:40:06",
+  "buildId": "ebc84040",
   "total": {
     "posts": 6,
     "pages": 2,
-    "words": 13461,
-    "minutes": 34
+    "words": 19246,
+    "minutes": 48
   },
   "byYear": [
     {
       "year": "2026",
       "posts": 4,
-      "words": 13009
+      "words": 18794
     },
     {
       "year": "2025",
@@ -26,12 +26,12 @@
   ],
   "topTags": [
     {
-      "name": "工程哲学",
+      "name": "随笔",
       "count": 3
     },
     {
-      "name": "随笔",
-      "count": 3
+      "name": "工程哲学",
+      "count": 2
     },
     {
       "name": "线性注意力",
@@ -62,34 +62,6 @@
       "count": 1
     },
     {
-      "name": "AI Agent",
-      "count": 1
-    },
-    {
-      "name": "系统设计",
-      "count": 1
-    },
-    {
-      "name": "C++",
-      "count": 1
-    },
-    {
-      "name": "提示注入",
-      "count": 1
-    },
-    {
-      "name": "沙箱",
-      "count": 1
-    },
-    {
-      "name": "多代理",
-      "count": 1
-    },
-    {
-      "name": "流式协议",
-      "count": 1
-    },
-    {
       "name": "静态站点",
       "count": 1
     },
@@ -104,6 +76,34 @@
     {
       "name": "前端",
       "count": 1
+    },
+    {
+      "name": "设计",
+      "count": 1
+    },
+    {
+      "name": "Markdown",
+      "count": 1
+    },
+    {
+      "name": "渲染管线",
+      "count": 1
+    },
+    {
+      "name": "KaTeX",
+      "count": 1
+    },
+    {
+      "name": "Mermaid",
+      "count": 1
+    },
+    {
+      "name": "CoT",
+      "count": 1
+    },
+    {
+      "name": "思维链",
+      "count": 1
     }
   ],
   "topCategories": [
@@ -112,15 +112,15 @@
       "count": 3
     },
     {
-      "name": "工程",
-      "count": 2
-    },
-    {
       "name": "论文",
       "count": 1
     },
     {
       "name": "深度学习",
+      "count": 1
+    },
+    {
+      "name": "工程",
       "count": 1
     }
   ],

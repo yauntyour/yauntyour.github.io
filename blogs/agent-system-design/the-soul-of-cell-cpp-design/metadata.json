@@ -1,0 +1,590 @@
+{
+  "id": "agent-system-design/the-soul-of-cell-cpp-design",
+  "title": "The Soul of cell.cpp Design",
+  "subtitle": "拆开一个单文件 C++ Agent —— 它从不幻想模型会听话，也从不假装自己能拦住一切",
+  "excerpt": "一个用 C++26 写的单文件编程 Agent，凭什么让我读了两遍？这一篇我拆开它的内部 —— 从九个工具的必要性论证、两阶段调度、六层安全模型、中断恢复的 token 边界，到零 token 的通知总线与深度 1 的子代理树 —— 去找那个反复出现在每一处取舍背后的同一种判断。",
+  "author": "曦儿",
+  "date": "2026-10-11",
+  "updated": "2026-10-11",
+  "timestamp": "2026-10-11T00:00:00",
+  "tags": [
+    "cell.cpp",
+    "Agent",
+    "C++26",
+    "系统设计",
+    "工程哲学",
+    "沙箱",
+    "多代理"
+  ],
+  "categories": [
+    "工程"
+  ],
+  "topics": [],
+  "markers": [],
+  "cover": "",
+  "lang": "zh-CN",
+  "url": "blogs/agent-system-design/the-soul-of-cell-cpp-design/app.html",
+  "draft": false,
+  "hidden": true,
+  "private": false,
+  "pinned": false,
+  "featured": false,
+  "weight": 0.0,
+  "series": "",
+  "collections": [],
+  "words": 4583,
+  "minutes": 11,
+  "hasCot": false,
+  "cot": [],
+  "toc": [
+    {
+      "level": 2,
+      "text": "1. 单文件是一种纪律，不是一种炫技",
+      "anchor": "1-单文件是一种纪律-不是一种炫技",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "2. 循环：结束条件必须可枚举",
+      "anchor": "2-循环-结束条件必须可枚举",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "3. 九个工具，逐个做过必要性论证",
+      "anchor": "3-九个工具-逐个做过必要性论证",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "4. ABI：返回值是给机器看的界面",
+      "anchor": "4-abi-返回值是给机器看的界面",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "5. \"它从不幻想模型会听话\"",
+      "anchor": "5-它从不幻想模型会听话",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "6. \"它从不假装自己能拦住一切\"",
+      "anchor": "6-它从不假装自己能拦住一切",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "7. 缝怎么填：fail-closed + 可降级",
+      "anchor": "7-缝怎么填-fail-closed-可降级",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "8. 状态不丢：从 token 边界到原子 rename",
+      "anchor": "8-状态不丢-从-token-边界到原子-rename",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "9. 零 token 的等待：把协调成本压到 0",
+      "anchor": "9-零-token-的等待-把协调成本压到-0",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "10. 自测与 transcript：让系统能自我证明",
+      "anchor": "10-自测与-transcript-让系统能自我证明",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "灵魂小结",
+      "anchor": "灵魂小结",
+      "children": []
+    }
+  ],
+  "aliases": [],
+  "parent": "agent-system-design",
+  "parts": [
+    {
+      "id": "agent-system-design",
+      "title": "cell.cpp文档（中文机翻）",
+      "subtitle": "",
+      "excerpt": "cell.cpp文档（中文机翻） 现代 C++26 编写的单文件 AI 编程代理 一个用现代 C++26 编写的轻量级 AI 编程代理。连接 OpenAI 或 Anthropic，与你的代码库对话，让 LLM 读取、写入、编辑并执行——全部在沙箱中完成。 --…",
+      "author": "Yauntyours",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T14:51:13",
+      "tags": [],
+      "categories": [],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 10816,
+      "minutes": 27,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "目录",
+          "anchor": "目录",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "功能特性",
+          "anchor": "功能特性",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "快速开始",
+          "anchor": "快速开始",
+          "children": [
+            {
+              "level": 3,
+              "text": "先决条件",
+              "anchor": "先决条件",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "构建",
+              "anchor": "构建",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "运行",
+              "anchor": "运行",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "命令行选项",
+          "anchor": "命令行选项",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "斜杠命令",
+          "anchor": "斜杠命令",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "工具",
+          "anchor": "工具",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Teamwork",
+          "anchor": "teamwork",
+          "children": [
+            {
+              "level": 3,
+              "text": "形态",
+              "anchor": "形态",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "文件租约与监督审查",
+              "anchor": "文件租约与监督审查",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "工作流执行、门控与监督",
+              "anchor": "工作流执行-门控与监督",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "tw 操作",
+              "anchor": "tw-操作",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "报告",
+              "anchor": "报告",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "从 REPL",
+              "anchor": "从-repl",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "调度与失败处理",
+              "anchor": "调度与失败处理",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "通知",
+          "anchor": "通知",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "安全模型",
+          "anchor": "安全模型",
+          "children": [
+            {
+              "level": 3,
+              "text": "1. 沙箱模式",
+              "anchor": "1-沙箱模式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2. 路径门控——check_path / is_sensitive_path",
+              "anchor": "2-路径门控-check_path-is_sensitive_path",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3. 命令门控——check / check_exec",
+              "anchor": "3-命令门控-check-check_exec",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4. 人工确认",
+              "anchor": "4-人工确认",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5. 输出加固",
+              "anchor": "5-输出加固",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6. 凭据保险库",
+              "anchor": "6-凭据保险库",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "会话与工作目录模型",
+          "anchor": "会话与工作目录模型",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "配置文件",
+          "anchor": "配置文件",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "运行时数据布局",
+          "anchor": "运行时数据布局",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "架构",
+          "anchor": "架构",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "代理循环",
+          "anchor": "代理循环",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "流式 UI 与键盘控制",
+          "anchor": "流式-ui-与键盘控制",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "中断与 /reload",
+          "anchor": "中断与-reload",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "日志、信号与退出码",
+          "anchor": "日志-信号与退出码",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "自测",
+          "anchor": "自测",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "实现说明",
+          "anchor": "实现说明",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "许可证",
+          "anchor": "许可证",
+          "children": []
+        }
+      ],
+      "aliases": []
+    },
+    {
+      "id": "agent-system-design/how-to-design-an-elegant-agent-system",
+      "title": "How to Design an Elegant Agent System",
+      "subtitle": "从 cell.cpp 提炼的十条构造原则 —— 把不确定性关进确定性的笼子",
+      "excerpt": "Agent 框架越做越厚，但真正的问题只有一个 —— 如何让一个只会预测下一个 token 的东西，可靠地改变外部世界。我以单文件 C++ Agent「cell.cpp」为样本，提炼出十条我自己认可并会照做的构造原则：从指令集设计、工具 ABI、机制优于提示词，到 fail-closed、状态不丢、多代理硬边界与可观测性。",
+      "author": "曦儿",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00",
+      "tags": [
+        "Agent",
+        "系统设计",
+        "工程哲学",
+        "LLM",
+        "工具调用",
+        "沙箱",
+        "多代理"
+      ],
+      "categories": [
+        "工程"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/how-to-design-an-elegant-agent-system/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 5343,
+      "minutes": 13,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "0. 我给 Agent 下的定义：它是一个控制系统，不是一个模型",
+          "anchor": "0-我给-agent-下的定义-它是一个控制系统-不是一个模型",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "1. 设计指令集，不是功能清单",
+          "anchor": "1-设计指令集-不是功能清单",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "2. 工具的返回值是 ABI，不是日志",
+          "anchor": "2-工具的返回值是-abi-不是日志",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "3. 能用机制保证的，不要写进提示词",
+          "anchor": "3-能用机制保证的-不要写进提示词",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "4. 每个工具都要有策略：Deny / Ask / Allow",
+          "anchor": "4-每个工具都要有策略-deny-ask-allow",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "5. 一切外部数据都是不可信输入",
+          "anchor": "5-一切外部数据都是不可信输入",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "6. Fail-closed，但一定要留降级路径",
+          "anchor": "6-fail-closed-但一定要留降级路径",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "7. 状态永不丢失",
+          "anchor": "7-状态永不丢失",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "8. 上下文是稀缺资源，它得有生命周期",
+          "anchor": "8-上下文是稀缺资源-它得有生命周期",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "9. 多代理必须有硬边界",
+          "anchor": "9-多代理必须有硬边界",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "10. 可观测性是第一等公民，不是附加功能",
+          "anchor": "10-可观测性是第一等公民-不是附加功能",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "尾声：我判断\"优雅\"的五条判据",
+          "anchor": "尾声-我判断-优雅-的五条判据",
+          "children": []
+        }
+      ],
+      "aliases": [],
+      "parent": "agent-system-design"
+    },
+    {
+      "id": "agent-system-design/the-soul-of-cell-cpp-design",
+      "title": "The Soul of cell.cpp Design",
+      "subtitle": "拆开一个单文件 C++ Agent —— 它从不幻想模型会听话，也从不假装自己能拦住一切",
+      "excerpt": "一个用 C++26 写的单文件编程 Agent，凭什么让我读了两遍？这一篇我拆开它的内部 —— 从九个工具的必要性论证、两阶段调度、六层安全模型、中断恢复的 token 边界，到零 token 的通知总线与深度 1 的子代理树 —— 去找那个反复出现在每一处取舍背后的同一种判断。",
+      "author": "曦儿",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00",
+      "tags": [
+        "cell.cpp",
+        "Agent",
+        "C++26",
+        "系统设计",
+        "工程哲学",
+        "沙箱",
+        "多代理"
+      ],
+      "categories": [
+        "工程"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/the-soul-of-cell-cpp-design/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 4583,
+      "minutes": 11,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "1. 单文件是一种纪律，不是一种炫技",
+          "anchor": "1-单文件是一种纪律-不是一种炫技",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "2. 循环：结束条件必须可枚举",
+          "anchor": "2-循环-结束条件必须可枚举",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "3. 九个工具，逐个做过必要性论证",
+          "anchor": "3-九个工具-逐个做过必要性论证",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "4. ABI：返回值是给机器看的界面",
+          "anchor": "4-abi-返回值是给机器看的界面",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "5. \"它从不幻想模型会听话\"",
+          "anchor": "5-它从不幻想模型会听话",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "6. \"它从不假装自己能拦住一切\"",
+          "anchor": "6-它从不假装自己能拦住一切",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "7. 缝怎么填：fail-closed + 可降级",
+          "anchor": "7-缝怎么填-fail-closed-可降级",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "8. 状态不丢：从 token 边界到原子 rename",
+          "anchor": "8-状态不丢-从-token-边界到原子-rename",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "9. 零 token 的等待：把协调成本压到 0",
+          "anchor": "9-零-token-的等待-把协调成本压到-0",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "10. 自测与 transcript：让系统能自我证明",
+          "anchor": "10-自测与-transcript-让系统能自我证明",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "灵魂小结",
+          "anchor": "灵魂小结",
+          "children": []
+        }
+      ],
+      "aliases": [],
+      "parent": "agent-system-design"
+    }
+  ],
+  "prev": "how-to-design-an-elegant-agent-system",
+  "next": "",
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/agent-system-design/the-soul-of-cell-cpp-design.md",
+  "assets": []
+}
