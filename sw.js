@@ -1,5 +1,5 @@
-/* Inkstone Service Worker · build c9bdeab3 */
-const VERSION = 'inkstone-c9bdeab3';
+/* Inkstone Service Worker · build d5ad41ee */
+const VERSION = 'inkstone-d5ad41ee';
 const PRECACHE = [
   "index.html",
   "app/database/blog-list.json",
@@ -7,7 +7,7 @@ const PRECACHE = [
   "app/core/app.fc9adb74c1.js",
   "app/core/enhance.5155c90e88.js",
   "app/core/nav.67d8ead59f.js",
-  "app/core/reading.62cc61c74a.js",
+  "app/core/reading.8aafb1e2d7.js",
   "app/core/search-ui.cdc570d5e8.js",
   "app/core/sw-register.a926a8e5e9.js",
   "app/core/theme-mode.977f523551.js",
