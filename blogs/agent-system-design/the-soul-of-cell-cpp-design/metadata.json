@@ -109,6 +109,120 @@
   "parts": [
     {
       "id": "agent-system-design",
+      "title": "How to Design an Elegant Agent System",
+      "subtitle": "从 cell.cpp 提炼的十条构造原则 —— 把不确定性关进确定性的笼子",
+      "excerpt": "Agent 框架越做越厚，但真正的问题只有一个 —— 如何让一个只会预测下一个 token 的东西，可靠地改变外部世界。我以单文件 C++ Agent「cell.cpp」为样本，提炼出十条我自己认可并会照做的构造原则：从指令集设计、工具 ABI、机制优于提示词，到 fail-closed、状态不丢、多代理硬边界与可观测性。",
+      "author": "曦儿",
+      "date": "2026-10-11",
+      "updated": "2026-10-11",
+      "timestamp": "2026-10-11T00:00:00",
+      "tags": [
+        "Agent",
+        "系统设计",
+        "工程哲学",
+        "LLM",
+        "工具调用",
+        "沙箱",
+        "多代理"
+      ],
+      "categories": [
+        "工程"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "Agent System Design",
+      "collections": [],
+      "words": 5343,
+      "minutes": 13,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "0. 我给 Agent 下的定义：它是一个控制系统，不是一个模型",
+          "anchor": "0-我给-agent-下的定义-它是一个控制系统-不是一个模型",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "1. 设计指令集，不是功能清单",
+          "anchor": "1-设计指令集-不是功能清单",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "2. 工具的返回值是 ABI，不是日志",
+          "anchor": "2-工具的返回值是-abi-不是日志",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "3. 能用机制保证的，不要写进提示词",
+          "anchor": "3-能用机制保证的-不要写进提示词",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "4. 每个工具都要有策略：Deny / Ask / Allow",
+          "anchor": "4-每个工具都要有策略-deny-ask-allow",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "5. 一切外部数据都是不可信输入",
+          "anchor": "5-一切外部数据都是不可信输入",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "6. Fail-closed，但一定要留降级路径",
+          "anchor": "6-fail-closed-但一定要留降级路径",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "7. 状态永不丢失",
+          "anchor": "7-状态永不丢失",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "8. 上下文是稀缺资源，它得有生命周期",
+          "anchor": "8-上下文是稀缺资源-它得有生命周期",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "9. 多代理必须有硬边界",
+          "anchor": "9-多代理必须有硬边界",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "10. 可观测性是第一等公民，不是附加功能",
+          "anchor": "10-可观测性是第一等公民-不是附加功能",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "尾声：我判断\"优雅\"的五条判据",
+          "anchor": "尾声-我判断-优雅-的五条判据",
+          "children": []
+        }
+      ],
+      "aliases": []
+    },
+    {
+      "id": "agent-system-design/cell-cpp-zh",
       "title": "cell.cpp文档（中文机翻）",
       "subtitle": "",
       "excerpt": "cell.cpp文档（中文机翻） 现代 C++26 编写的单文件 AI 编程代理 一个用现代 C++26 编写的轻量级 AI 编程代理。连接 OpenAI 或 Anthropic，与你的代码库对话，让 LLM 读取、写入、编辑并执行——全部在沙箱中完成。 --…",
@@ -122,9 +236,9 @@
       "markers": [],
       "cover": "",
       "lang": "zh-CN",
-      "url": "blogs/agent-system-design/app.html",
+      "url": "blogs/agent-system-design/cell-cpp-zh/app.html",
       "draft": false,
-      "hidden": false,
+      "hidden": true,
       "private": false,
       "pinned": false,
       "featured": false,
@@ -356,120 +470,6 @@
           "children": []
         }
       ],
-      "aliases": []
-    },
-    {
-      "id": "agent-system-design/how-to-design-an-elegant-agent-system",
-      "title": "How to Design an Elegant Agent System",
-      "subtitle": "从 cell.cpp 提炼的十条构造原则 —— 把不确定性关进确定性的笼子",
-      "excerpt": "Agent 框架越做越厚，但真正的问题只有一个 —— 如何让一个只会预测下一个 token 的东西，可靠地改变外部世界。我以单文件 C++ Agent「cell.cpp」为样本，提炼出十条我自己认可并会照做的构造原则：从指令集设计、工具 ABI、机制优于提示词，到 fail-closed、状态不丢、多代理硬边界与可观测性。",
-      "author": "曦儿",
-      "date": "2026-10-11",
-      "updated": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00",
-      "tags": [
-        "Agent",
-        "系统设计",
-        "工程哲学",
-        "LLM",
-        "工具调用",
-        "沙箱",
-        "多代理"
-      ],
-      "categories": [
-        "工程"
-      ],
-      "topics": [],
-      "markers": [],
-      "cover": "",
-      "lang": "zh-CN",
-      "url": "blogs/agent-system-design/how-to-design-an-elegant-agent-system/app.html",
-      "draft": false,
-      "hidden": true,
-      "private": false,
-      "pinned": false,
-      "featured": false,
-      "weight": 0.0,
-      "series": "",
-      "collections": [],
-      "words": 5343,
-      "minutes": 13,
-      "hasCot": false,
-      "cot": [],
-      "toc": [
-        {
-          "level": 2,
-          "text": "0. 我给 Agent 下的定义：它是一个控制系统，不是一个模型",
-          "anchor": "0-我给-agent-下的定义-它是一个控制系统-不是一个模型",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "1. 设计指令集，不是功能清单",
-          "anchor": "1-设计指令集-不是功能清单",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "2. 工具的返回值是 ABI，不是日志",
-          "anchor": "2-工具的返回值是-abi-不是日志",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "3. 能用机制保证的，不要写进提示词",
-          "anchor": "3-能用机制保证的-不要写进提示词",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "4. 每个工具都要有策略：Deny / Ask / Allow",
-          "anchor": "4-每个工具都要有策略-deny-ask-allow",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "5. 一切外部数据都是不可信输入",
-          "anchor": "5-一切外部数据都是不可信输入",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "6. Fail-closed，但一定要留降级路径",
-          "anchor": "6-fail-closed-但一定要留降级路径",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "7. 状态永不丢失",
-          "anchor": "7-状态永不丢失",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "8. 上下文是稀缺资源，它得有生命周期",
-          "anchor": "8-上下文是稀缺资源-它得有生命周期",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "9. 多代理必须有硬边界",
-          "anchor": "9-多代理必须有硬边界",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "10. 可观测性是第一等公民，不是附加功能",
-          "anchor": "10-可观测性是第一等公民-不是附加功能",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "尾声：我判断\"优雅\"的五条判据",
-          "anchor": "尾声-我判断-优雅-的五条判据",
-          "children": []
-        }
-      ],
       "aliases": [],
       "parent": "agent-system-design"
     },
@@ -583,7 +583,7 @@
       "parent": "agent-system-design"
     }
   ],
-  "prev": "how-to-design-an-elegant-agent-system",
+  "prev": "cell-cpp-zh",
   "next": "",
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/agent-system-design/the-soul-of-cell-cpp-design.md",
   "assets": []
