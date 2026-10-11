@@ -1,5 +1,5 @@
-/* Inkstone Service Worker · build 50941fd5 */
-const VERSION = 'inkstone-50941fd5';
+/* Inkstone Service Worker · build f0668308 */
+const VERSION = 'inkstone-f0668308';
 const PRECACHE = [
   "index.html",
   "app/database/blog-list.json",

@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-11T07:14:46Z</lastBuildDate>
+<lastBuildDate>2026-10-11T07:55:00Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -24,16 +24,16 @@
 <li><a href="#4-how-to-construct-your-own-attention-kernel">4. How to Construct Your Own Attention Kernel</a></li>
 <li><a href="#5-challenges-in-engineering-construction">5. Challenges in Engineering Construction</a>
 <ul>
-<li><a href="#51-the-dilemma-of-ffn">5.1 The Dilemma of FFN</a></li>
-<li><a href="#52-hyperlink-based-residual-replacement-for-degradation-eradication">5.2 Hyperlink-Based Residual Replacement for Degradation Eradication</a></li>
-<li><a href="#53-how-memory-works">5.3 How Memory Works</a></li>
+<li><a href="#5-1-the-dilemma-of-ffn">5.1 The Dilemma of FFN</a></li>
+<li><a href="#5-2-hyperlink-based-residual-replacement-for-degradation-eradication">5.2 Hyperlink-Based Residual Replacement for Degradation Eradication</a></li>
+<li><a href="#5-3-how-memory-works">5.3 How Memory Works</a></li>
 </ul>
 </li>
 <li><a href="#6-experiments">6. Experiments</a>
 <ul>
-<li><a href="#61-no-memory-training-comparison">6.1 No Memory Training Comparison</a></li>
-<li><a href="#62-memory-additional">6.2 Memory Additional</a></li>
-<li><a href="#63-long-range-training">6.3 Long-range Training</a></li>
+<li><a href="#6-1-no-memory-training-comparison">6.1 No Memory Training Comparison</a></li>
+<li><a href="#6-2-memory-additional">6.2 Memory Additional</a></li>
+<li><a href="#6-3-long-range-training">6.3 Long-range Training</a></li>
 </ul>
 </li>
 <li><a href="#7-extend-to-vision-models">7. Extend to Vision Models</a></li>
@@ -452,14 +452,14 @@
 </li>
 </ol>
 ]]></description></item>
-<item><title>代理系统设计的骨架</title><link>https://yaunt.github.io/blog/blogs/agent-system-design/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/agent-system-design/app.html</guid><pubDate>2026-10-11T00:00:00Z</pubDate><author>Yauntyours</author><category>AI Agent</category><category>系统设计</category><category>C++</category><category>提示注入</category><category>沙箱</category><category>多代理</category><category>流式协议</category><category>工程哲学</category><description><![CDATA[<section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么按&quot;层&quot;而不是按&quot;功能&quot;组织</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>读完 cell.cpp 的两份材料之后，最容易的写法是把它复述一遍：有哪些工具、
+<item><title>Agent系统设计的骨架</title><link>https://yaunt.github.io/blog/blogs/agent-system-design/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/agent-system-design/app.html</guid><pubDate>2026-10-11T00:00:00Z</pubDate><author>Yauntyours</author><category>AI Agent</category><category>系统设计</category><category>C++</category><category>提示注入</category><category>沙箱</category><category>多代理</category><category>流式协议</category><category>工程哲学</category><description><![CDATA[<section class="cot" data-cot id="cot-1"><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么按&quot;层&quot;而不是按&quot;功能&quot;组织</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>读完 cell.cpp 的两份材料之后，最容易的写法是把它复述一遍：有哪些工具、
 有哪些命令、有哪些安全检查。那样写出来的文章和它的 README 没有区别。</p>
 </div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><p>换一个切法就清楚了。工具、命令、配置都是<strong>表层现象</strong>，换一套实现就变；
 但&quot;一次对话可以被叫停并续接&quot;&quot;多个执行体不会互相踩脚&quot;&quot;模型读到的字节都
-经过归一化&quot;这几件事，是<strong>任何</strong>代理系统都要面对的结构性问题。</p>
+经过归一化&quot;这几件事，是<strong>任何</strong>Agent系统都要面对的结构性问题。</p>
 </div></div></li><li class="cot__step" data-step="3" data-title=""><span class="cot__index" aria-hidden="true">03</span><div class="cot__step-body"><div class="cot__step-content"><p>所以本文的主干是四层：控制、能力、信任、底座。每层都只回答一个问题，
 具体机制放在子文章里展开。</p>
-</div></div></li></ol></div></section><section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">主文与子文的分工</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>两篇子文章各有立场：</p>
+</div></div></li></ol></div></section><section class="cot" data-cot id="cot-2"><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">主文与子文的分工</span><span class="cot__badge">3 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>两篇子文章各有立场：</p>
 </div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><ul>
 <li><strong>使用手册</strong>（<a href="../../blogs/agent-system-design/cell-cpp-zh/app.html" title="wikilink">cell.cpp 中文说明</a>）是横向的，回答&quot;它有什么、
 怎么用、边界在哪&quot;，是一份可以直接查的参考。</li>
@@ -809,7 +809,7 @@ curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库�
 <figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">IO System :</span><span class="cl">	Input[...] -&gt; router -&gt; actuator[...] -&gt; router -&gt; Output[...]/storage[...]</span><span class="cl">	Catch -&gt; Error</span><span class="cl">Exception System:</span><span class="cl">	Error Input[...] -&gt; router -&gt; actuator[...] -&gt; router -&gt; Output[...]/storage[...]</span><span class="cl"> </span></code></pre></div></figure>
 <p>基于这个模型出发构造的系统就是一个最基本的冯诺依曼架构的计算机，这里提到的计算机并非电子设备，而是广泛意义上的计算机器。</p>
 ]]></description></item>
-<item><title>你好，墨痕 —— 一个用 Python 渲染的水墨博客引擎</title><link>https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</guid><pubDate>2026-07-05T00:00:00Z</pubDate><author>曦儿</author><category>静态站点</category><category>Python</category><category>构建系统</category><category>前端</category><category>设计</category><category>Markdown</category><category>渲染管线</category><category>KaTeX</category><category>Mermaid</category><category>CoT</category><category>思维链</category><category>交互设计</category><description><![CDATA[<section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么要把推理过程单独拎出来</span><span class="cot__badge">2 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>正文负责结论，推理过程负责可信度。</p>
+<item><title>你好，墨痕 —— 一个用 Python 渲染的水墨博客引擎</title><link>https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</guid><pubDate>2026-07-05T00:00:00Z</pubDate><author>曦儿</author><category>静态站点</category><category>Python</category><category>构建系统</category><category>前端</category><category>设计</category><category>Markdown</category><category>渲染管线</category><category>KaTeX</category><category>Mermaid</category><category>CoT</category><category>思维链</category><category>交互设计</category><description><![CDATA[<section class="cot" data-cot id="cot-1"><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么要把推理过程单独拎出来</span><span class="cot__badge">2 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>正文负责结论，推理过程负责可信度。</p>
 </div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><p>把两者混在一起，读者要么被细节淹没，要么无法验证结论。分开之后，
 想深究的人可以展开，只想看结论的人可以跳过。</p>
 </div></div></li></ol></div></section><p>这个站点由 <strong>Inkstone</strong> 渲染 —— 一个用 Python 写的静态博客引擎。它只做三件事：读 Markdown、读配置、写出一坨可以直接丢到任何静态托管上的文件。</p>
@@ -1028,7 +1028,7 @@ curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库�
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="9035658">
+<div class="mermaid" data-src-hash="82587602">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1041,7 +1041,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="19333004">
+<div class="mermaid" data-src-hash="78310086">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
@@ -1067,7 +1067,7 @@ sequenceDiagram
 <p>在需要的位置插入 <code>:::cot</code> 容器，容器内用三级标题切分步骤：</p>
 <figure class="codeblock" data-lang="markdown"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">markdown</span><span class="codeblock__lang">markdown</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-markdown hl"><span class="cl">:::cot 为什么选择 Hadamard Exp 核</span><span class="cl"><span class="gu">### 观察</span></span><span class="cl">候选核函数里，只有指数型同时满足非负性与精确可分解。</span><span class="cl"></span><span class="cl"><span class="gu">### 对比</span></span><span class="cl">加法/减法平方欧氏距离核可以分解，但值域为负，需要额外处理。</span><span class="cl"></span><span class="cl"><span class="gu">### 结论</span></span><span class="cl">选择 $\exp(A) \ast \exp(B)$，并在行方向做归一化。</span><span class="cl">:::</span><span class="cl"></span></code></pre></div></figure>
 <p>渲染结果如下：</p>
-<section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么选择 Hadamard Exp 核</span><span class="cot__badge">4 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title="观察"><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><h4 class="cot__step-title">观察</h4><div class="cot__step-content"><p>候选核函数大致可分四类：多项式型、指数型、非负周期型、绝对值型。要满足「精确可分解 + 充分可区分 + 非负 + 几何可解释」四条，可选范围迅速收窄。</p>
+<section class="cot" data-cot id="cot-2"><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么选择 Hadamard Exp 核</span><span class="cot__badge">4 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title="观察"><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><h4 class="cot__step-title">观察</h4><div class="cot__step-content"><p>候选核函数大致可分四类：多项式型、指数型、非负周期型、绝对值型。要满足「精确可分解 + 充分可区分 + 非负 + 几何可解释」四条，可选范围迅速收窄。</p>
 </div></div></li><li class="cot__step" data-step="2" data-title="对比"><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><h4 class="cot__step-title">对比</h4><div class="cot__step-content"><p>加法/减法平方欧氏距离核确实可以精确分解为 <span class="math math--inline" data-tex="\|A\|^2 + \|B\|^2 \pm 2A\cdot B">\|A\|^2 + \|B\|^2 \pm 2A\cdot B</span>，但值域含负，作为注意力权重时需要额外处理，且几何解释偏「方向」而弱化「共激活」。</p>
 </div></div></li><li class="cot__step" data-step="3" data-title="结论"><span class="cot__index" aria-hidden="true">03</span><div class="cot__step-body"><h4 class="cot__step-title">结论</h4><div class="cot__step-content"><p>选择 <span class="math math--inline" data-tex="\exp(A_i) \ast \exp(B_j)">\exp(A_i) \ast \exp(B_j)</span>。指数变换天然非负、处处可导，并且逐元素乘积刻画的是<strong>特征共激活强度</strong>，与余弦相似度关注的方向一致性互补。</p>
 </div></div></li><li class="cot__step" data-step="4" data-title="代价"><span class="cot__index" aria-hidden="true">04</span><div class="cot__step-body"><h4 class="cot__step-title">代价</h4><div class="cot__step-content"><p>指数会放大数值范围，因此需要在特征维度上加约束（例如缩放或减均值），否则长序列上累积量会溢出。</p>
