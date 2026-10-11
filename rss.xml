@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-10T16:45:01Z</lastBuildDate>
+<lastBuildDate>2026-10-11T04:57:55Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -452,6 +452,42 @@
 </li>
 </ol>
 ]]></description></item>
+<item><title>agent-system-design</title><link>https://yaunt.github.io/blog/blogs/agent-system-design/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/agent-system-design/app.html</guid><pubDate>2026-10-11T12:10:06Z</pubDate><author>Yauntyours</author><description><![CDATA[]]></description></item>
+<item><title>最小系统的设计原理</title><link>https://yaunt.github.io/blog/blogs/zero-system/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/zero-system/app.html</guid><pubDate>2026-10-11T00:00:00Z</pubDate><author>Yauntyours</author><category>随笔</category><category>工程哲学</category><description><![CDATA[<p>一般而言，根据钱老的《工程控制论》思想，一个系统可以由以下部分组成：</p>
+<figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">1. 被控对象（Plant / Process）</span><span class="cl">2. 参考输入（给定值、目标值）</span><span class="cl">3. 比较环节（求偏差）</span><span class="cl">4. 控制器（调节器、控制律）</span><span class="cl">5. 执行机构（执行器、驱动装置）</span><span class="cl">6. 测量环节 / 传感器（反馈检测）</span><span class="cl">7. 反馈通道</span><span class="cl">8. 输出量（被控量）</span><span class="cl">9. 扰动 / 干扰</span><span class="cl">10. 环境与边界条件</span><span class="cl"> </span></code></pre></div></figure>
+<p>其基本结构可表示为：</p>
+<figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">扰动</span><span class="cl"> ↓</span><span class="cl">参考输入 r → 比较器 → 控制器 → 执行机构 → 被控对象 → 输出 y</span><span class="cl">              ↑ -                              │</span><span class="cl">              └──────── 传感器 / 反馈通道 ←──────┘</span><span class="cl"> </span></code></pre></div></figure>
+<p>其中：</p>
+<ul>
+<li>
+<p><strong>比较器</strong>：计算偏差，例如 e=r−ye=r−y；</p>
+</li>
+<li>
+<p><strong>控制器</strong>：根据偏差生成控制信号；</p>
+</li>
+<li>
+<p><strong>执行机构</strong>：把控制信号转化为实际作用；</p>
+</li>
+<li>
+<p><strong>被控对象</strong>：被控制的设备或过程；</p>
+</li>
+<li>
+<p><strong>反馈通道</strong>：把输出信息送回输入端，形成闭环；</p>
+</li>
+<li>
+<p><strong>扰动</strong>：外界或内部不可控因素对系统的影响。</p>
+</li>
+</ul>
+<p>因此，按《工程控制论》的观点，一个系统最核心的是：<strong>被控对象、控制器、反馈、输入输出以及扰动</strong>。它们通过信息流和能量流相互联系，构成一个具有目标、行为和稳定性的控制系统。</p>
+<p>但并非所有系统都包括数理化的控制部分，而是一些逻辑的拓扑结构，对于这样的一般性系统，我认为由以下几个基本组成：</p>
+<figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">1. 输入输出端（IO）</span><span class="cl">2. 调度器（router）</span><span class="cl">3. 执行器（actuator）</span><span class="cl">4. 存储单元（storage）</span><span class="cl"> </span></code></pre></div></figure>
+<p>它们按如下结构组成最小系统：</p>
+<figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">Input[...] -&gt; router -&gt; actuator[...] -&gt; router -&gt; Output[...]/storage[...]</span><span class="cl"> </span></code></pre></div></figure>
+<p><code>[...]</code> 代表这里可能存在多个对象，例如输入经过调度器后，分发到不同的执行端，最后由调度器收集结果，分发到输出或存储，形成完整的输入输出模型。
+在通常情况下还应当包含异常捕获机制，但它往往也是按照最小系统组成的，所以一个完善设计的系统最基本的情况下应当由两个最小系统组成：</p>
+<figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">IO System :</span><span class="cl">	Input[...] -&gt; router -&gt; actuator[...] -&gt; router -&gt; Output[...]/storage[...]</span><span class="cl">	Catch -&gt; Error</span><span class="cl">Exception System:</span><span class="cl">	Error Input[...] -&gt; router -&gt; actuator[...] -&gt; router -&gt; Output[...]/storage[...]</span><span class="cl"> </span></code></pre></div></figure>
+<p>基于这个模型出发构造的系统就是一个最基本的冯诺依曼架构的计算机，这里提到的计算机并非电子设备，而是广泛意义上的计算机器。</p>
+]]></description></item>
 <item><title>你好，墨痕 —— 一个用 Python 渲染的水墨博客引擎</title><link>https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/hello-inkstone/app.html</guid><pubDate>2026-07-05T00:00:00Z</pubDate><author>曦儿</author><category>静态站点</category><category>Python</category><category>构建系统</category><category>前端</category><category>设计</category><category>Markdown</category><category>渲染管线</category><category>KaTeX</category><category>Mermaid</category><category>CoT</category><category>思维链</category><category>交互设计</category><description><![CDATA[<section class="cot" data-cot><div class="cot__head"><button class="cot__toggle" type="button" aria-expanded="true"><span class="cot__icon" aria-hidden="true">◈</span><span class="cot__title">为什么要把推理过程单独拎出来</span><span class="cot__badge">2 步</span><span class="cot__chevron" aria-hidden="true"></span></button><div class="cot__actions"><button type="button" class="cot__action" data-cot-copy>复制</button><button type="button" class="cot__action" data-cot-export>导出</button><button type="button" class="cot__action" data-cot-mindmap>导图</button><button type="button" class="cot__action" data-cot-hide>隐藏</button></div></div><div class="cot__panel"><ol class="cot__steps"><li class="cot__step" data-step="1" data-title=""><span class="cot__index" aria-hidden="true">01</span><div class="cot__step-body"><div class="cot__step-content"><p>正文负责结论，推理过程负责可信度。</p>
 </div></div></li><li class="cot__step" data-step="2" data-title=""><span class="cot__index" aria-hidden="true">02</span><div class="cot__step-body"><div class="cot__step-content"><p>把两者混在一起，读者要么被细节淹没，要么无法验证结论。分开之后，
 想深究的人可以展开，只想看结论的人可以跳过。</p>
@@ -671,7 +707,7 @@
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="24523932">
+<div class="mermaid" data-src-hash="23742975">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -684,7 +720,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="60624703">
+<div class="mermaid" data-src-hash="34364256">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker

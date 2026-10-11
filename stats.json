@@ -1,17 +1,17 @@
 {
-  "generated": "2026-10-10T16:45:01",
-  "buildId": "50f58ced",
+  "generated": "2026-10-11T04:57:55",
+  "buildId": "10b17abd",
   "total": {
-    "posts": 4,
+    "posts": 6,
     "pages": 2,
-    "words": 7985,
-    "minutes": 20
+    "words": 8430,
+    "minutes": 22
   },
   "byYear": [
     {
       "year": "2026",
-      "posts": 2,
-      "words": 7533
+      "posts": 4,
+      "words": 7978
     },
     {
       "year": "2025",
@@ -27,6 +27,10 @@
   "topTags": [
     {
       "name": "随笔",
+      "count": 3
+    },
+    {
+      "name": "工程哲学",
       "count": 2
     },
     {
@@ -100,16 +104,12 @@
     {
       "name": "思维链",
       "count": 1
-    },
-    {
-      "name": "交互设计",
-      "count": 1
     }
   ],
   "topCategories": [
     {
       "name": "随笔",
-      "count": 2
+      "count": 3
     },
     {
       "name": "论文",
@@ -126,12 +126,12 @@
   ],
   "authors": [
     {
-      "name": "曦儿",
+      "name": "Yauntyours",
       "count": 3
     },
     {
-      "name": "Yauntyours",
-      "count": 1
+      "name": "曦儿",
+      "count": 3
     }
   ]
 }

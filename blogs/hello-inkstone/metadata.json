@@ -24,13 +24,8 @@
   "categories": [
     "工程"
   ],
-  "topics": [
-    "博客引擎"
-  ],
-  "markers": [
-    "综述",
-    "参考"
-  ],
+  "topics": [],
+  "markers": [],
   "cover": "../../blogs/hello-inkstone/assets/ink-flow.svg",
   "lang": "zh-CN",
   "url": "blogs/hello-inkstone/app.html",
@@ -39,7 +34,7 @@
   "private": false,
   "pinned": false,
   "featured": false,
-  "weight": 60.0,
+  "weight": 0.0,
   "series": "博客引擎",
   "collections": [],
   "words": 2580,
@@ -257,16 +252,18 @@
     "blogs/cot-demo",
     "blogs/markdown-showcase"
   ],
-  "prev": "exact-linear-attention",
+  "prev": "zero-system",
   "next": "quiet-machines",
   "related": [
+    "agent-system-design",
+    "zero-system",
     "exact-linear-attention",
-    "quiet-machines",
-    "first-light"
+    "quiet-machines"
   ],
   "backlinks": [],
   "outbound": [],
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/hello-inkstone/index.md",
+  "parts": [],
   "assets": [
     {
       "name": "assets/ink-flow.svg",

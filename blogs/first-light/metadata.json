@@ -14,12 +14,8 @@
   "categories": [
     "随笔"
   ],
-  "topics": [
-    "杂谈"
-  ],
-  "markers": [
-    "里程碑"
-  ],
+  "topics": [],
+  "markers": [],
   "cover": "",
   "lang": "zh-CN",
   "url": "blogs/first-light/app.html",
@@ -28,7 +24,7 @@
   "private": false,
   "pinned": false,
   "featured": false,
-  "weight": 10.0,
+  "weight": 0.0,
   "series": "",
   "collections": [],
   "words": 119,
@@ -40,10 +36,12 @@
   "prev": "quiet-machines",
   "next": "",
   "related": [
-    "quiet-machines"
+    "quiet-machines",
+    "zero-system"
   ],
   "backlinks": [],
   "outbound": [],
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/first-light/index.md",
+  "parts": [],
   "assets": []
 }

@@ -20,13 +20,8 @@
     "论文",
     "深度学习"
   ],
-  "topics": [
-    "Exact Linear Attention"
-  ],
-  "markers": [
-    "论文",
-    "核心工作"
-  ],
+  "topics": [],
+  "markers": [],
   "cover": "../../blogs/exact-linear-attention/assets/Introduce.webp",
   "lang": "zh-CN",
   "url": "blogs/exact-linear-attention/app.html",
@@ -35,7 +30,7 @@
   "private": false,
   "pinned": true,
   "featured": true,
-  "weight": 100.0,
+  "weight": 99.99,
   "series": "Exact Linear Attention",
   "collections": [],
   "words": 4953,
@@ -153,15 +148,17 @@
     "exact-linear-attention-paper"
   ],
   "prev": "",
-  "next": "hello-inkstone",
+  "next": "agent-system-design",
   "related": [
+    "agent-system-design",
+    "zero-system",
     "hello-inkstone",
-    "quiet-machines",
-    "first-light"
+    "quiet-machines"
   ],
   "backlinks": [],
   "outbound": [],
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/exact-linear-attention/index.md",
+  "parts": [],
   "assets": [
     {
       "name": "assets/Architecture.png",

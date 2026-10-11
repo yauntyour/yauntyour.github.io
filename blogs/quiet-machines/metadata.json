@@ -14,12 +14,8 @@
   "categories": [
     "随笔"
   ],
-  "topics": [
-    "杂谈"
-  ],
-  "markers": [
-    "随笔"
-  ],
+  "topics": [],
+  "markers": [],
   "cover": "",
   "lang": "zh-CN",
   "url": "blogs/quiet-machines/app.html",
@@ -28,7 +24,7 @@
   "private": false,
   "pinned": false,
   "featured": false,
-  "weight": 20.0,
+  "weight": 0.0,
   "series": "",
   "collections": [],
   "words": 333,
@@ -40,10 +36,12 @@
   "prev": "hello-inkstone",
   "next": "first-light",
   "related": [
+    "zero-system",
     "first-light"
   ],
   "backlinks": [],
   "outbound": [],
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/quiet-machines/index.md",
+  "parts": [],
   "assets": []
 }
