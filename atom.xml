@@ -5,7 +5,7 @@
 <link href="https://yaunt.github.io/blog"/>
 <link href="https://yaunt.github.io/blog/atom.xml" rel="self"/>
 <id>https://yaunt.github.io/blog</id>
-<updated>2026-10-11T09:00:24Z</updated>
+<updated>2026-10-11T09:57:59Z</updated>
 <generator>Inkstone Static Blog Engine</generator>
 <entry><title>Exact Linear Attention</title><link href="https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html"/><id>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</id><updated>2026-06-04T00:00:00Z</updated><published>2026-06-04T00:00:00Z</published><author><name>Yauntyours</name></author><category term="线性注意力"/><category term="注意力机制"/><category term="MoE"/><category term="记忆模块"/><category term="YOLO"/><category term="视觉模型"/><category term="核函数"/><summary type="text">线性注意力长期被视为把 Transformer 扩展到长序列的关键方向。本文给出一种&quot;精确&quot;线性注意力：利用核函数的精确可分解性，把 $O(L^2)$ 注意力改写为 $O(L)$ 的线性形式而不损失精度，并进一步讨论 FFN 可解释性、Hyper-Link 残差替换与&quot;质记忆&quot;模块，最后把方法推广到视觉模型。</summary><content type="html"><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -1027,7 +1027,7 @@ curl，只有 <code>cell::encrypt</code> 知道 libsodium。跨平台、换库�
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="16500059">
+<div class="mermaid" data-src-hash="11457513">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1040,7 +1040,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="98508031">
+<div class="mermaid" data-src-hash="42730218">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
