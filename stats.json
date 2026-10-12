@@ -1,17 +1,17 @@
 {
-  "generated": "2026-10-11T15:42:45",
-  "buildId": "f93ad559",
+  "generated": "2026-10-12T04:50:20",
+  "buildId": "30e01395",
   "total": {
-    "posts": 6,
+    "posts": 7,
     "pages": 2,
-    "words": 13773,
-    "minutes": 34
+    "words": 15548,
+    "minutes": 38
   },
   "byYear": [
     {
       "year": "2026",
-      "posts": 4,
-      "words": 13321
+      "posts": 5,
+      "words": 15096
     },
     {
       "year": "2025",
@@ -62,6 +62,30 @@
       "count": 1
     },
     {
+      "name": "神经网络",
+      "count": 1
+    },
+    {
+      "name": "反向传播",
+      "count": 1
+    },
+    {
+      "name": "流形假设",
+      "count": 1
+    },
+    {
+      "name": "MNIST",
+      "count": 1
+    },
+    {
+      "name": "数据工程",
+      "count": 1
+    },
+    {
+      "name": "PyTorch",
+      "count": 1
+    },
+    {
       "name": "Agent",
       "count": 1
     },
@@ -79,30 +103,6 @@
     },
     {
       "name": "沙箱",
-      "count": 1
-    },
-    {
-      "name": "多代理",
-      "count": 1
-    },
-    {
-      "name": "静态站点",
-      "count": 1
-    },
-    {
-      "name": "Python",
-      "count": 1
-    },
-    {
-      "name": "构建系统",
-      "count": 1
-    },
-    {
-      "name": "前端",
-      "count": 1
-    },
-    {
-      "name": "设计",
       "count": 1
     }
   ],
@@ -122,6 +122,10 @@
     {
       "name": "深度学习",
       "count": 1
+    },
+    {
+      "name": "机器学习",
+      "count": 1
     }
   ],
   "authors": [
@@ -132,6 +136,10 @@
     {
       "name": "Yauntyours",
       "count": 2
+    },
+    {
+      "name": "曦儿 & Yauntyours",
+      "count": 1
     }
   ]
 }

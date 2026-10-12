@@ -111,7 +111,7 @@
     }
   ],
   "aliases": [],
-  "prev": "exact-linear-attention",
+  "prev": "machine-learning",
   "next": "zero-system",
   "related": [
     "quiet-machines",

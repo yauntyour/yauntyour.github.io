@@ -148,12 +148,12 @@
     "exact-linear-attention-paper"
   ],
   "prev": "",
-  "next": "agent-system-design",
+  "next": "machine-learning",
   "related": [
+    "machine-learning",
     "agent-system-design",
     "zero-system",
-    "hello-inkstone",
-    "quiet-machines"
+    "hello-inkstone"
   ],
   "backlinks": [],
   "outbound": [],

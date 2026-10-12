@@ -1,0 +1,445 @@
+{
+  "id": "machine-learning/机器学习-注意力的时代",
+  "title": "机器学习·注意力的时代",
+  "subtitle": "Attention is all you need.",
+  "excerpt": "CNN 靠局部感受野堆叠视野，RNN 把整段历史压进定长向量，序列建模一度陷入瓶颈。本文从「软寻址」的直觉讲起，推导缩放点积注意力与多头机制，拆解 Transformer 的编码器、解码器、位置编码与残差归一化，并给出一个几十行、可独立运行的 PyTorch 注意力模型——「注意力的时代」由此开始。",
+  "author": "曦儿 & Yauntyours",
+  "date": "2026-10-12",
+  "updated": "2026-10-12",
+  "timestamp": "2026-10-12T00:00:00",
+  "tags": [
+    "Transformer",
+    "注意力机制",
+    "自注意力",
+    "位置编码",
+    "PyTorch"
+  ],
+  "categories": [
+    "机器学习"
+  ],
+  "topics": [],
+  "markers": [],
+  "cover": "",
+  "lang": "zh-CN",
+  "url": "blogs/machine-learning/机器学习-注意力的时代/app.html",
+  "draft": false,
+  "hidden": true,
+  "private": false,
+  "pinned": false,
+  "featured": false,
+  "weight": 0.0,
+  "series": "",
+  "collections": [],
+  "words": 2537,
+  "minutes": 6,
+  "hasCot": false,
+  "cot": [],
+  "toc": [
+    {
+      "level": 2,
+      "text": "必要的背景知识",
+      "anchor": "必要的背景知识",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "序列建模的困境",
+      "anchor": "序列建模的困境",
+      "children": [
+        {
+          "level": 3,
+          "text": "卷积为何不够",
+          "anchor": "卷积为何不够",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "循环网络为何遇瓶颈",
+          "anchor": "循环网络为何遇瓶颈",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "一个核心问题",
+          "anchor": "一个核心问题",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "text": "注意力机制",
+      "anchor": "注意力机制",
+      "children": [
+        {
+          "level": 3,
+          "text": "核心直觉：软寻址",
+          "anchor": "核心直觉-软寻址",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "数学定义：缩放点积注意力",
+          "anchor": "数学定义-缩放点积注意力",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "自注意力",
+          "anchor": "自注意力",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "多头注意力",
+          "anchor": "多头注意力",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "text": "Transformer 架构",
+      "anchor": "transformer-架构",
+      "children": [
+        {
+          "level": 3,
+          "text": "总体结构",
+          "anchor": "总体结构",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "位置编码",
+          "anchor": "位置编码",
+          "children": []
+        },
+        {
+          "level": 3,
+          "text": "残差与归一化",
+          "anchor": "残差与归一化",
+          "children": []
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "text": "代价与局限",
+      "anchor": "代价与局限",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "为什么是\"注意力的时代\"",
+      "anchor": "为什么是-注意力的时代",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "代码实现（PyTorch）",
+      "anchor": "代码实现-pytorch",
+      "children": []
+    },
+    {
+      "level": 2,
+      "text": "结语",
+      "anchor": "结语",
+      "children": []
+    }
+  ],
+  "aliases": [],
+  "parent": "machine-learning",
+  "parts": [
+    {
+      "id": "machine-learning",
+      "title": "机器学习·智械起源",
+      "subtitle": "数字如何从0到1构造智能",
+      "excerpt": "从「观察 → 表示 → 预测 → 决策 → 行动 → 反馈 → 更新」的闭环出发，本文梳理机器学习的本质与流形假设，给出神经网络的标准数学模型与损失函数，再用一份可直接运行的 PyTorch 代码跑通 MNIST 手写数字识别，并系统总结数据集构造的方法与常见坑——这是一切人工智能学习的开端。",
+      "author": "曦儿 & Yauntyours",
+      "date": "2026-10-12",
+      "updated": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00",
+      "tags": [
+        "神经网络",
+        "反向传播",
+        "流形假设",
+        "MNIST",
+        "数据工程",
+        "PyTorch"
+      ],
+      "categories": [
+        "机器学习"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/machine-learning/app.html",
+      "draft": false,
+      "hidden": false,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 1775,
+      "minutes": 4,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "必要的背景知识",
+          "anchor": "必要的背景知识",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "机器学习的本质",
+          "anchor": "机器学习的本质",
+          "children": [
+            {
+              "level": 3,
+              "text": "一般架构",
+              "anchor": "一般架构",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "流形假设",
+              "anchor": "流形假设",
+              "children": [
+                {
+                  "level": 4,
+                  "text": "直观理解",
+                  "anchor": "直观理解",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "局限与争议",
+                  "anchor": "局限与争议",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "如何构造神经网络",
+          "anchor": "如何构造神经网络",
+          "children": [
+            {
+              "level": 3,
+              "text": "数学模型",
+              "anchor": "数学模型",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "约束条件及参数更新",
+              "anchor": "约束条件及参数更新",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "训练",
+              "anchor": "训练",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "如何构造数据集",
+          "anchor": "如何构造数据集",
+          "children": [
+            {
+              "level": 3,
+              "text": "设计数据集的结构",
+              "anchor": "设计数据集的结构",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "处理数据集",
+              "anchor": "处理数据集",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "常见坑",
+              "anchor": "常见坑",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "结语",
+          "anchor": "结语",
+          "children": []
+        }
+      ],
+      "aliases": []
+    },
+    {
+      "id": "machine-learning/机器学习-注意力的时代",
+      "title": "机器学习·注意力的时代",
+      "subtitle": "Attention is all you need.",
+      "excerpt": "CNN 靠局部感受野堆叠视野，RNN 把整段历史压进定长向量，序列建模一度陷入瓶颈。本文从「软寻址」的直觉讲起，推导缩放点积注意力与多头机制，拆解 Transformer 的编码器、解码器、位置编码与残差归一化，并给出一个几十行、可独立运行的 PyTorch 注意力模型——「注意力的时代」由此开始。",
+      "author": "曦儿 & Yauntyours",
+      "date": "2026-10-12",
+      "updated": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00",
+      "tags": [
+        "Transformer",
+        "注意力机制",
+        "自注意力",
+        "位置编码",
+        "PyTorch"
+      ],
+      "categories": [
+        "机器学习"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/machine-learning/机器学习-注意力的时代/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 2537,
+      "minutes": 6,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "必要的背景知识",
+          "anchor": "必要的背景知识",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "序列建模的困境",
+          "anchor": "序列建模的困境",
+          "children": [
+            {
+              "level": 3,
+              "text": "卷积为何不够",
+              "anchor": "卷积为何不够",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "循环网络为何遇瓶颈",
+              "anchor": "循环网络为何遇瓶颈",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "一个核心问题",
+              "anchor": "一个核心问题",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "注意力机制",
+          "anchor": "注意力机制",
+          "children": [
+            {
+              "level": 3,
+              "text": "核心直觉：软寻址",
+              "anchor": "核心直觉-软寻址",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "数学定义：缩放点积注意力",
+              "anchor": "数学定义-缩放点积注意力",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "自注意力",
+              "anchor": "自注意力",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "多头注意力",
+              "anchor": "多头注意力",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "Transformer 架构",
+          "anchor": "transformer-架构",
+          "children": [
+            {
+              "level": 3,
+              "text": "总体结构",
+              "anchor": "总体结构",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "位置编码",
+              "anchor": "位置编码",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "残差与归一化",
+              "anchor": "残差与归一化",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "代价与局限",
+          "anchor": "代价与局限",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "为什么是\"注意力的时代\"",
+          "anchor": "为什么是-注意力的时代",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "代码实现（PyTorch）",
+          "anchor": "代码实现-pytorch",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "结语",
+          "anchor": "结语",
+          "children": []
+        }
+      ],
+      "aliases": [],
+      "parent": "machine-learning"
+    }
+  ],
+  "prev": "machine-learning",
+  "next": "",
+  "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/machine-learning/机器学习·注意力的时代.md",
+  "assets": []
+}
