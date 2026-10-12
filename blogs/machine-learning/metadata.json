@@ -280,6 +280,522 @@
       "aliases": []
     },
     {
+      "id": "machine-learning/机器学习-张量的线性代数",
+      "title": "机器学习·张量的线性代数",
+      "subtitle": "横竖之间，自有乾坤。",
+      "excerpt": "本文以**纯公式推导**为主体，从向量空间与线性映射的公理化定义出发，一路推进到内积与正交化、行列式、矩阵分解（LU / Cholesky / QR / 谱分解 / SVD / 极分解）、范数与扰动理论、最小二乘与伪逆，再进入张量代数与张量分解（CP / Tucker / TT）。每一节的形式统一为：**定义 → 定理 → 逐步推导 → 典型例题 → 机器学习落点**。全文所有分解、范数不等式与恒等式均给出可反向验证的步骤，凡结论必有推导链条，不出现「显然」「易证」而跳步的地方。",
+      "author": "Yauntyours",
+      "date": "2026-10-12",
+      "updated": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00",
+      "tags": [
+        "线性代数",
+        "矩阵分解",
+        "张量"
+      ],
+      "categories": [
+        "机器学习"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/machine-learning/机器学习-张量的线性代数/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 35960,
+      "minutes": 90,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "第零章 记号与布局约定",
+          "anchor": "第零章-记号与布局约定",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "第一部分 向量空间与线性映射",
+          "anchor": "第一部分-向量空间与线性映射",
+          "children": [
+            {
+              "level": 3,
+              "text": "1.1 向量空间的公理化定义",
+              "anchor": "1-1-向量空间的公理化定义",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.2 线性组合、张成与基",
+              "anchor": "1-2-线性组合-张成与基",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.3 维数唯一性：替换引理",
+              "anchor": "1-3-维数唯一性-替换引理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.4 子空间、交与和",
+              "anchor": "1-4-子空间-交与和",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.5 线性映射：核、像与矩阵表示",
+              "anchor": "1-5-线性映射-核-像与矩阵表示",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.6 秩-零度定理",
+              "anchor": "1-6-秩-零度定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.7 四个基本子空间",
+              "anchor": "1-7-四个基本子空间",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第二部分 内积空间与正交性",
+          "anchor": "第二部分-内积空间与正交性",
+          "children": [
+            {
+              "level": 3,
+              "text": "2.1 内积公理与 Cauchy–Schwarz",
+              "anchor": "2-1-内积公理与-cauchy-schwarz",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.2 正交基与 Gram–Schmidt",
+              "anchor": "2-2-正交基与-gram-schmidt",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.3 正交补与正交分解",
+              "anchor": "2-3-正交补与正交分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.4 正交投影",
+              "anchor": "2-4-正交投影",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.5 Fourier 展开与最优逼近",
+              "anchor": "2-5-fourier-展开与最优逼近",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第三部分 行列式",
+          "anchor": "第三部分-行列式",
+          "children": [
+            {
+              "level": 3,
+              "text": "3.1 行列式的公理化定义",
+              "anchor": "3-1-行列式的公理化定义",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.2 存在唯一性",
+              "anchor": "3-2-存在唯一性",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.3 Leibniz 公式与 Laplace 展开",
+              "anchor": "3-3-leibniz-公式与-laplace-展开",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.4 乘法公式",
+              "anchor": "3-4-乘法公式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.5 Cramer 法则与逆矩阵公式",
+              "anchor": "3-5-cramer-法则与逆矩阵公式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.6 几何意义：有向体积",
+              "anchor": "3-6-几何意义-有向体积",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.7 机器学习落点",
+              "anchor": "3-7-机器学习落点",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第四部分 特征值与矩阵分解",
+          "anchor": "第四部分-特征值与矩阵分解",
+          "children": [
+            {
+              "level": 3,
+              "text": "4.1 特征值与特征向量",
+              "anchor": "4-1-特征值与特征向量",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.2 对角化",
+              "anchor": "4-2-对角化",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.3 对称矩阵的谱定理",
+              "anchor": "4-3-对称矩阵的谱定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.4 Schur 分解、正规矩阵与实 Schur 形",
+              "anchor": "4-4-schur-分解-正规矩阵与实-schur-形",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.5 LU 分解",
+              "anchor": "4-5-lu-分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.6 Cholesky 分解",
+              "anchor": "4-6-cholesky-分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.7 QR 分解",
+              "anchor": "4-7-qr-分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.8 奇异值分解 SVD",
+              "anchor": "4-8-奇异值分解-svd",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.9 极分解",
+              "anchor": "4-9-极分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.10 机器学习落点：谱的三处现身",
+              "anchor": "4-10-机器学习落点-谱的三处现身",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第五部分 范数、低秩近似与扰动分析",
+          "anchor": "第五部分-范数-低秩近似与扰动分析",
+          "children": [
+            {
+              "level": 3,
+              "text": "5.1 向量范数的公理与三大不等式",
+              "anchor": "5-1-向量范数的公理与三大不等式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.2 对偶范数",
+              "anchor": "5-2-对偶范数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.3 矩阵范数",
+              "anchor": "5-3-矩阵范数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.4 Rayleigh 商与 Courant–Fischer",
+              "anchor": "5-4-rayleigh-商与-courant-fischer",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.5 Eckart–Young–Mirsky 定理",
+              "anchor": "5-5-eckart-young-mirsky-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.6 Moore–Penrose 伪逆",
+              "anchor": "5-6-moore-penrose-伪逆",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.7 最小二乘：三法并列",
+              "anchor": "5-7-最小二乘-三法并列",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.8 条件数与扰动分析",
+              "anchor": "5-8-条件数与扰动分析",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.9 机器学习落点",
+              "anchor": "5-9-机器学习落点",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第六部分 张量代数",
+          "anchor": "第六部分-张量代数",
+          "children": [
+            {
+              "level": 3,
+              "text": "6.1 多重线性映射",
+              "anchor": "6-1-多重线性映射",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.2 张量积的泛性质",
+              "anchor": "6-2-张量积的泛性质",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.3 张量的坐标、外积与秩一分解",
+              "anchor": "6-3-张量的坐标-外积与秩一分解",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.4 纤维、切片与 mode-n 展开",
+              "anchor": "6-4-纤维-切片与-mode-n-展开",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.5 mode-n 乘积",
+              "anchor": "6-5-mode-n-乘积",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.6 张量的内积、范数与 Gram 矩阵",
+              "anchor": "6-6-张量的内积-范数与-gram-矩阵",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.7 Kronecker 积与 vec：张量化矩阵乘法",
+              "anchor": "6-7-kronecker-积与-vec-张量化矩阵乘法",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.8 对称张量与反对称张量",
+              "anchor": "6-8-对称张量与反对称张量",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第七部分 张量分解",
+          "anchor": "第七部分-张量分解",
+          "children": [
+            {
+              "level": 3,
+              "text": "7.1 CP 分解与张量秩",
+              "anchor": "7-1-cp-分解与张量秩",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.2 CP-ALS 算法",
+              "anchor": "7-2-cp-als-算法",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.3 唯一性与可识别性",
+              "anchor": "7-3-唯一性与可识别性",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.4 Tucker 分解与 HOSVD",
+              "anchor": "7-4-tucker-分解与-hosvd",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.5 张量秩的病态性",
+              "anchor": "7-5-张量秩的病态性",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.6 Tensor Train 分解与张量网络",
+              "anchor": "7-6-tensor-train-分解与张量网络",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第八部分 机器学习落点总篇",
+          "anchor": "第八部分-机器学习落点总篇",
+          "children": [
+            {
+              "level": 3,
+              "text": "8.1 嵌入层：查表即线性映射",
+              "anchor": "8-1-嵌入层-查表即线性映射",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.2 全连接层、BatchNorm 与协方差",
+              "anchor": "8-2-全连接层-batchnorm-与协方差",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.3 卷积的矩阵结构：Toeplitz 与循环",
+              "anchor": "8-3-卷积的矩阵结构-toeplitz-与循环",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.4 注意力机制：张量收缩视角",
+              "anchor": "8-4-注意力机制-张量收缩视角",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.5 SVD 推荐系统与矩阵补全",
+              "anchor": "8-5-svd-推荐系统与矩阵补全",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.6 LoRA：低秩微调的分解视角",
+              "anchor": "8-6-lora-低秩微调的分解视角",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.7 初始化：Xavier 与 He 的方差推导",
+              "anchor": "8-7-初始化-xavier-与-he-的方差推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.8 谱归一化与幂迭代",
+              "anchor": "8-8-谱归一化与幂迭代",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.9 张量化网络：参数量账本",
+              "anchor": "8-9-张量化网络-参数量账本",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.10 K-FAC：二阶优化的 Kronecker 结构",
+              "anchor": "8-10-k-fac-二阶优化的-kronecker-结构",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "8.11 词向量几何：平移不变性与词类比",
+              "anchor": "8-11-词向量几何-平移不变性与词类比",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "附录 A 矩阵分解速查表",
+          "anchor": "附录-a-矩阵分解速查表",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 B 范数与矩阵不等式速查",
+          "anchor": "附录-b-范数与矩阵不等式速查",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 C 张量运算速查表",
+          "anchor": "附录-c-张量运算速查表",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 D 符号索引",
+          "anchor": "附录-d-符号索引",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "全文公式核对说明",
+          "anchor": "全文公式核对说明",
+          "children": [
+            {
+              "level": 3,
+              "text": "数值复核记录（独立于推导的机器验证）",
+              "anchor": "数值复核记录-独立于推导的机器验证",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "aliases": [],
+      "parent": "machine-learning"
+    },
+    {
       "id": "machine-learning/机器学习-微积分",
       "title": "机器学习·微积分",
       "subtitle": "微风拂过，积少成多。",
