@@ -30,7 +30,7 @@
   "private": false,
   "pinned": true,
   "featured": true,
-  "weight": 99.99,
+  "weight": 99.98,
   "series": "Exact Linear Attention",
   "collections": [],
   "words": 4953,
@@ -145,12 +145,12 @@
   ],
   "aliases": [],
   "prev": "",
-  "next": "machine-learning",
+  "next": "cxx-std-list",
   "related": [
+    "cxx-std-list",
     "machine-learning",
     "agent-system-design",
-    "zero-system",
-    "hello-inkstone"
+    "zero-system"
   ],
   "backlinks": [],
   "outbound": [],
@@ -188,7 +188,7 @@
       "private": false,
       "pinned": true,
       "featured": true,
-      "weight": 99.99,
+      "weight": 99.98,
       "series": "Exact Linear Attention",
       "collections": [],
       "words": 4953,

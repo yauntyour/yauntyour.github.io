@@ -132,13 +132,13 @@
     }
   ],
   "aliases": [],
-  "prev": "exact-linear-attention",
+  "prev": "cxx-std-list",
   "next": "agent-system-design",
   "related": [
+    "cxx-std-list",
     "agent-system-design",
     "zero-system",
-    "hello-inkstone",
-    "exact-linear-attention"
+    "hello-inkstone"
   ],
   "backlinks": [],
   "outbound": [],

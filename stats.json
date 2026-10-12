@@ -1,17 +1,17 @@
 {
-  "generated": "2026-10-12T15:03:50",
-  "buildId": "91de5a67",
+  "generated": "2026-10-12T15:58:13",
+  "buildId": "f964eb02",
   "total": {
-    "posts": 7,
+    "posts": 8,
     "pages": 2,
-    "words": 15548,
-    "minutes": 38
+    "words": 16988,
+    "minutes": 42
   },
   "byYear": [
     {
       "year": "2026",
-      "posts": 5,
-      "words": 15096
+      "posts": 6,
+      "words": 16536
     },
     {
       "year": "2025",
@@ -135,7 +135,7 @@
     },
     {
       "name": "Yauntyours",
-      "count": 2
+      "count": 3
     },
     {
       "name": "曦儿 & Yauntyours",
