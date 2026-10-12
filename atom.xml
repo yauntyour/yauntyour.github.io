@@ -5,7 +5,7 @@
 <link href="https://yaunt.github.io/blog"/>
 <link href="https://yaunt.github.io/blog/atom.xml" rel="self"/>
 <id>https://yaunt.github.io/blog</id>
-<updated>2026-10-12T14:51:34Z</updated>
+<updated>2026-10-12T15:03:50Z</updated>
 <generator>Inkstone Static Blog Engine</generator>
 <entry><title>Exact Linear Attention</title><link href="https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html"/><id>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</id><updated>2026-06-04T00:00:00Z</updated><published>2026-06-04T00:00:00Z</published><author><name>Yauntyours</name></author><category term="线性注意力"/><category term="注意力机制"/><category term="MoE"/><category term="记忆模块"/><category term="YOLO"/><category term="视觉模型"/><category term="核函数"/><summary type="text">线性注意力长期被视为把 Transformer 扩展到长序列的关键方向。本文给出一种&quot;精确&quot;线性注意力：利用核函数的精确可分解性，把 $O(L^2)$ 注意力改写为 $O(L)$ 的线性形式而不损失精度，并进一步讨论 FFN 可解释性、Hyper-Link 残差替换与&quot;质记忆&quot;模块，最后把方法推广到视觉模型。</summary><content type="html"><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -475,7 +475,7 @@
 <h3 id="一般架构">一般架构</h3>
 <p>一般地，我们认为机器学习遵循一个一般性的路线：</p>
 <figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">观察 → 表示 → 预测 → 决策 → 行动 → 反馈 → 更新 → 更好的观察与决策</span><span class="cl"> </span></code></pre></div></figure>
-<div class="mermaid" data-src-hash="11253367">
+<div class="mermaid" data-src-hash="46460364">
 flowchart TD
     Z[&quot;0：空白系统&lt;br/&gt;只有 0/1 比特&quot;] --&gt; P[&quot;感知&lt;br/&gt;观察环境/获取数据&quot;]
     P --&gt; R[&quot;表示&lt;br/&gt;编码为向量/符号/世界模型&quot;]
@@ -1120,7 +1120,7 @@ x \approx f(z)+\varepsilon,\quad z\in \mathbb{R}^d \\
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="65426377">
+<div class="mermaid" data-src-hash="96804510">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1133,7 +1133,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="67269435">
+<div class="mermaid" data-src-hash="68181764">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
