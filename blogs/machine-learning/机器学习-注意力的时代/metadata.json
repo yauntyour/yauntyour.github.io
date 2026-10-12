@@ -286,6 +286,668 @@
       "aliases": []
     },
     {
+      "id": "machine-learning/机器学习-微积分",
+      "title": "机器学习·微积分",
+      "subtitle": "微风拂过，积少成多。",
+      "excerpt": "本文以**纯公式推导**为主体，从极限的 $\\varepsilon$-$N$ 定义出发，一路推进到多元微积分、曲线曲面积分、复变函数微积分与泛函微积分。每一节的形式统一为：**定义 → 定理 → 逐步推导 → 典型例题 → 机器学习落点**。全文所有导数表、积分表与恒等式均给出可反向验证的步骤，凡结论必有推导链条，不出现「显然」「易证」而跳步的地方。",
+      "author": "Yauntyours",
+      "date": "2026-10-12",
+      "updated": "2026-10-12",
+      "timestamp": "2026-10-12T00:00:00",
+      "tags": [
+        "微积分",
+        "高等数学"
+      ],
+      "categories": [
+        "机器学习"
+      ],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/machine-learning/机器学习-微积分/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 38640,
+      "minutes": 97,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "第零章 记号与布局约定",
+          "anchor": "第零章-记号与布局约定",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "第一部分 极限与连续",
+          "anchor": "第一部分-极限与连续",
+          "children": [
+            {
+              "level": 3,
+              "text": "1.1 极限的 - / - 定义",
+              "anchor": "1-1-极限的-定义",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.2 极限的四则运算",
+              "anchor": "1-2-极限的四则运算",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.3 夹逼准则、单调有界、Cauchy 准则",
+              "anchor": "1-3-夹逼准则-单调有界-cauchy-准则",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.4 两个重要极限的严格推导",
+              "anchor": "1-4-两个重要极限的严格推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.5 等价无穷小全表与逐条推导",
+              "anchor": "1-5-等价无穷小全表与逐条推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.6 连续性、间断点与闭区间上的性质",
+              "anchor": "1-6-连续性-间断点与闭区间上的性质",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.7 级数收敛性与幂级数",
+              "anchor": "1-7-级数收敛性与幂级数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "1.8 机器学习落点：极限、无穷小与数值稳定性",
+              "anchor": "1-8-机器学习落点-极限-无穷小与数值稳定性",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第二部分 一元微分学",
+          "anchor": "第二部分-一元微分学",
+          "children": [
+            {
+              "level": 3,
+              "text": "2.1 导数的定义与基本性质",
+              "anchor": "2-1-导数的定义与基本性质",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.2 求导法则的完整推导",
+              "anchor": "2-2-求导法则的完整推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.3 基本导数表的逐条推导",
+              "anchor": "2-3-基本导数表的逐条推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.4 隐函数、参数方程与高阶导数",
+              "anchor": "2-4-隐函数-参数方程与高阶导数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.5 中值定理族与 Taylor 公式",
+              "anchor": "2-5-中值定理族与-taylor-公式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.6 常用 Taylor 展开（，即 Maclaurin）",
+              "anchor": "2-6-常用-taylor-展开-即-maclaurin",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.7 L'Hôpital 法则",
+              "anchor": "2-7-l-hôpital-法则",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.8 单调性、凹凸性、极值与曲率",
+              "anchor": "2-8-单调性-凹凸性-极值与曲率",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.9 凸函数理论：一阶、二阶条件与 descent lemma",
+              "anchor": "2-9-凸函数理论-一阶-二阶条件与-descent-lemma",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.10 梯度下降的收敛性：完整推导",
+              "anchor": "2-10-梯度下降的收敛性-完整推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.11 Newton 法与二次收敛",
+              "anchor": "2-11-newton-法与二次收敛",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2.12 数值微分与自动微分",
+              "anchor": "2-12-数值微分与自动微分",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第三部分 一元积分学",
+          "anchor": "第三部分-一元积分学",
+          "children": [
+            {
+              "level": 3,
+              "text": "3.1 Riemann 积分的定义与可积性",
+              "anchor": "3-1-riemann-积分的定义与可积性",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.2 微积分基本定理",
+              "anchor": "3-2-微积分基本定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.3 两大积分技术的推导",
+              "anchor": "3-3-两大积分技术的推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.4 常用积分的推导（不查表，全部现场算出）",
+              "anchor": "3-4-常用积分的推导-不查表-全部现场算出",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.5 Wallis 公式与 、Beta 函数",
+              "anchor": "3-5-wallis-公式与-beta-函数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.6 高斯积分：极坐标法完整推导",
+              "anchor": "3-6-高斯积分-极坐标法完整推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.7 反常积分",
+              "anchor": "3-7-反常积分",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.8 含参变量积分与 Leibniz 积分法则",
+              "anchor": "3-8-含参变量积分与-leibniz-积分法则",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.9 概率视角：期望、矩与矩生成函数",
+              "anchor": "3-9-概率视角-期望-矩与矩生成函数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3.10 数值积分：误差阶与蒙特卡洛",
+              "anchor": "3-10-数值积分-误差阶与蒙特卡洛",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第四部分 多元微分学与矩阵微积分",
+          "anchor": "第四部分-多元微分学与矩阵微积分",
+          "children": [
+            {
+              "level": 3,
+              "text": "4.1 偏导数、方向导数与全微分",
+              "anchor": "4-1-偏导数-方向导数与全微分",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.2 多元链式法则、Jacobian 乘法与反向传播",
+              "anchor": "4-2-多元链式法则-jacobian-乘法与反向传播",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.3 梯度是最速上升方向",
+              "anchor": "4-3-梯度是最速上升方向",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.4 Hessian 的对称性（Schwarz/Clairaut 定理）",
+              "anchor": "4-4-hessian-的对称性-schwarz-clairaut-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.5 多元 Taylor 公式",
+              "anchor": "4-5-多元-taylor-公式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.6 隐函数定理、反函数定理与隐式微分",
+              "anchor": "4-6-隐函数定理-反函数定理与隐式微分",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.7 多元极值的判别",
+              "anchor": "4-7-多元极值的判别",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.8 Lagrange 乘子法与 KKT 条件",
+              "anchor": "4-8-lagrange-乘子法与-kkt-条件",
+              "children": [
+                {
+                  "level": 4,
+                  "text": "实例 A：SVM 对偶问题的完整推导",
+                  "anchor": "实例-a-svm-对偶问题的完整推导",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "实例 B：最大熵原理导出 softmax",
+                  "anchor": "实例-b-最大熵原理导出-softmax",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "实例 C：给定一、二阶矩的最大熵分布是高斯",
+                  "anchor": "实例-c-给定一-二阶矩的最大熵分布是高斯",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "level": 3,
+              "text": "4.9 矩阵微积分：全部公式的推导",
+              "anchor": "4-9-矩阵微积分-全部公式的推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.10 最小二乘、岭回归与贝叶斯对应",
+              "anchor": "4-10-最小二乘-岭回归与贝叶斯对应",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.11 逻辑回归：从似然到凸性的完整链条",
+              "anchor": "4-11-逻辑回归-从似然到凸性的完整链条",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.12 log-sum-exp、softmax 与凸共轭",
+              "anchor": "4-12-log-sum-exp-softmax-与凸共轭",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4.13 多元凸性、保凸运算与矩阵指数",
+              "anchor": "4-13-多元凸性-保凸运算与矩阵指数",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第五部分 重积分与曲线曲面积分",
+          "anchor": "第五部分-重积分与曲线曲面积分",
+          "children": [
+            {
+              "level": 3,
+              "text": "5.1 二重积分与 Fubini 定理",
+              "anchor": "5-1-二重积分与-fubini-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.2 极坐标与一般变量替换：Jacobian 的推导",
+              "anchor": "5-2-极坐标与一般变量替换-jacobian-的推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.3 概率密度变换公式与多元高斯的推导",
+              "anchor": "5-3-概率密度变换公式与多元高斯的推导",
+              "children": [
+                {
+                  "level": 4,
+                  "text": "Normalizing Flow 的对数似然",
+                  "anchor": "normalizing-flow-的对数似然",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "level": 3,
+              "text": "5.4 第一类与第二类曲线积分",
+              "anchor": "5-4-第一类与第二类曲线积分",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.5 保守场、势函数与 Green 定理",
+              "anchor": "5-5-保守场-势函数与-green-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.6 散度、旋度与向量微积分恒等式",
+              "anchor": "5-6-散度-旋度与向量微积分恒等式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.7 高斯散度定理与 Stokes 定理",
+              "anchor": "5-7-高斯散度定理与-stokes-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5.8 曲线曲面积分在机器学习中的四个核心恒等式",
+              "anchor": "5-8-曲线曲面积分在机器学习中的四个核心恒等式",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第六部分 复变函数微积分",
+          "anchor": "第六部分-复变函数微积分",
+          "children": [
+            {
+              "level": 3,
+              "text": "6.1 复数与欧拉公式的三种推导",
+              "anchor": "6-1-复数与欧拉公式的三种推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.2 复可导性与 Cauchy-Riemann 方程",
+              "anchor": "6-2-复可导性与-cauchy-riemann-方程",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.3 Wirtinger 微积分（复数优化的正确工具）",
+              "anchor": "6-3-wirtinger-微积分-复数优化的正确工具",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.4 复积分、Cauchy 积分定理与积分公式",
+              "anchor": "6-4-复积分-cauchy-积分定理与积分公式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.5 Laurent 级数、极点与留数定理",
+              "anchor": "6-5-laurent-级数-极点与留数定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.6 用留数计算实积分（四类标准围道）",
+              "anchor": "6-6-用留数计算实积分-四类标准围道",
+              "children": [
+                {
+                  "level": 4,
+                  "text": "类型 I：（）",
+                  "anchor": "类型-i",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "类型 II：（Jordan 引理）",
+                  "anchor": "类型-ii-jordan-引理",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "类型 III：（钥匙孔围道，多值函数）",
+                  "anchor": "类型-iii-钥匙孔围道-多值函数",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "类型 IV：（实轴上有极点，用留 indentation）",
+                  "anchor": "类型-iv-实轴上有极点-用留-indentation",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "level": 3,
+              "text": "6.7 Fourier 变换、卷积与特征函数",
+              "anchor": "6-7-fourier-变换-卷积与特征函数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.8 Poisson 求和公式与 Nyquist 采样定理",
+              "anchor": "6-8-poisson-求和公式与-nyquist-采样定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.9 Laplace 变换、传递函数与稳定性",
+              "anchor": "6-9-laplace-变换-传递函数与稳定性",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6.10 FFT 的分治推导与复杂度",
+              "anchor": "6-10-fft-的分治推导与复杂度",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "第七部分 泛函微积分",
+          "anchor": "第七部分-泛函微积分",
+          "children": [
+            {
+              "level": 3,
+              "text": "7.1 赋范空间、内积空间与三个基本不等式",
+              "anchor": "7-1-赋范空间-内积空间与三个基本不等式",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.2 Fréchet 导数与 Gâteaux 导数",
+              "anchor": "7-2-fréchet-导数与-gâteaux-导数",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.3 变分法基本引理与 Euler-Lagrange 方程",
+              "anchor": "7-3-变分法基本引理与-euler-lagrange-方程",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.4 四大变分例题（完整求解）",
+              "anchor": "7-4-四大变分例题-完整求解",
+              "children": [
+                {
+                  "level": 4,
+                  "text": "例题 7.2（最短路径 ⇒ 直线）",
+                  "anchor": "例题-7-2-最短路径-直线",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "例题 7.3（最速降线 ⇒ 摆线）",
+                  "anchor": "例题-7-3-最速降线-摆线",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "例题 7.4（最小旋转曲面 ⇒ 悬链线）",
+                  "anchor": "例题-7-4-最小旋转曲面-悬链线",
+                  "children": []
+                },
+                {
+                  "level": 4,
+                  "text": "例题 7.5（等周问题 ⇒ 圆）",
+                  "anchor": "例题-7-5-等周问题-圆",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "level": 3,
+              "text": "7.5 二阶变分与 Legendre 条件",
+              "anchor": "7-5-二阶变分与-legendre-条件",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.6 Wasserstein 梯度流：另一种函数空间度量",
+              "anchor": "7-6-wasserstein-梯度流-另一种函数空间度量",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.7 指数族：由变分原理导出的统一分布类",
+              "anchor": "7-7-指数族-由变分原理导出的统一分布类",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.8 KL 散度、交叉熵与 ELBO",
+              "anchor": "7-8-kl-散度-交叉熵与-elbo",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.9 自然梯度与 Fisher 信息矩阵",
+              "anchor": "7-9-自然梯度与-fisher-信息矩阵",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.10 Neural ODE 伴随法：变分推导",
+              "anchor": "7-10-neural-ode-伴随法-变分推导",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.11 Banach 不动点定理与 Bellman 算子",
+              "anchor": "7-11-banach-不动点定理与-bellman-算子",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.12 RKHS 与 representer 定理",
+              "anchor": "7-12-rkhs-与-representer-定理",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.13 神经正切核（NTK）与无穷宽极限",
+              "anchor": "7-13-神经正切核-ntk-与无穷宽极限",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "7.14 收敛性的统一图景",
+              "anchor": "7-14-收敛性的统一图景",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "附录 A 向量与矩阵微积分速查表",
+          "anchor": "附录-a-向量与矩阵微积分速查表",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 B 常用积分速查表",
+          "anchor": "附录-b-常用积分速查表",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 C 常用 Taylor 展开与等价无穷小（）",
+          "anchor": "附录-c-常用-taylor-展开与等价无穷小",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 D 凸性判别与常用凸函数",
+          "anchor": "附录-d-凸性判别与常用凸函数",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "附录 E 符号索引",
+          "anchor": "附录-e-符号索引",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "全文公式核对说明",
+          "anchor": "全文公式核对说明",
+          "children": [
+            {
+              "level": 3,
+              "text": "数值复核记录（独立于推导的机器验证）",
+              "anchor": "数值复核记录-独立于推导的机器验证",
+              "children": []
+            }
+          ]
+        }
+      ],
+      "aliases": [],
+      "parent": "machine-learning"
+    },
+    {
       "id": "machine-learning/机器学习-注意力的时代",
       "title": "机器学习·注意力的时代",
       "subtitle": "Attention is all you need.",
@@ -438,7 +1100,7 @@
       "parent": "machine-learning"
     }
   ],
-  "prev": "machine-learning",
+  "prev": "机器学习-微积分",
   "next": "",
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/machine-learning/机器学习·注意力的时代.md",
   "assets": []
