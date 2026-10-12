@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-12T12:25:51Z</lastBuildDate>
+<lastBuildDate>2026-10-12T13:03:02Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -476,7 +476,7 @@
 <h3 id="一般架构">一般架构</h3>
 <p>一般地，我们认为机器学习遵循一个一般性的路线：</p>
 <figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">观察 → 表示 → 预测 → 决策 → 行动 → 反馈 → 更新 → 更好的观察与决策</span><span class="cl"> </span></code></pre></div></figure>
-<div class="mermaid" data-src-hash="42600316">
+<div class="mermaid" data-src-hash="50339629">
 flowchart TD
     Z[&quot;0：空白系统&lt;br/&gt;只有 0/1 比特&quot;] --&gt; P[&quot;感知&lt;br/&gt;观察环境/获取数据&quot;]
     P --&gt; R[&quot;表示&lt;br/&gt;编码为向量/符号/世界模型&quot;]
@@ -1121,7 +1121,7 @@ x \approx f(z)+\varepsilon,\quad z\in \mathbb{R}^d \\
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="25869620">
+<div class="mermaid" data-src-hash="86302621">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1134,7 +1134,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="30597977">
+<div class="mermaid" data-src-hash="13273056">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker
