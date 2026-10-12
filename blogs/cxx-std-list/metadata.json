@@ -1,7 +1,7 @@
 {
   "id": "cxx-std-list",
-  "title": "cxx-std-list",
-  "subtitle": "",
+  "title": "C++ Standard Library List",
+  "subtitle": "C++标准库列表",
   "excerpt": "截至 C++26（2026 年 3 月已定稿），标准库的组件非常庞大。下面按功能类别整理了一份核心标准库组件表格，覆盖从 C++11 到 C++26 的主要头文件及其作用，并附上常见用法示例。 --- 一、语言支持与基础工具 | 头文件…",
   "author": "Yauntyours",
   "date": "2026-10-12",
@@ -103,8 +103,8 @@
   "parts": [
     {
       "id": "cxx-std-list",
-      "title": "cxx-std-list",
-      "subtitle": "",
+      "title": "C++ Standard Library List",
+      "subtitle": "C++标准库列表",
       "excerpt": "截至 C++26（2026 年 3 月已定稿），标准库的组件非常庞大。下面按功能类别整理了一份核心标准库组件表格，覆盖从 C++11 到 C++26 的主要头文件及其作用，并附上常见用法示例。 --- 一、语言支持与基础工具 | 头文件…",
       "author": "Yauntyours",
       "date": "2026-10-12",
