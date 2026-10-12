@@ -23,7 +23,7 @@ function bindSuggestions(scope){scope.querySelectorAll('[data-suggest]').forEach
 schedule(btn.getAttribute('data-suggest'),true);});});}
 function setActive(index){activeIndex=index;document.querySelectorAll('.result').forEach((row)=>{row.classList.toggle('is-active',Number(row.getAttribute('data-index'))===index);});}
 function navigate(url,newTab){if(!url)return;const absolute=/^https?:/.test(url)?url:new URL(url,location.href).href;if(newTab){window.open(absolute,'_blank','noopener');return;}
-if(window.InkNav)window.InkNav.go(absolute);else location.href=absolute;}
+if(window.InkNav&&window.InkNav.navigate)window.InkNav.navigate(absolute);else location.href=absolute;}
 function readHistory(){try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]');}catch(e){return[];}}
 function pushHistory(query){const value=String(query||'').trim();if(value.length<2)return;const list=readHistory().filter((item)=>item!==value);list.unshift(value);try{localStorage.setItem(HIST_KEY,JSON.stringify(list.slice(0,SEARCH_CFG.history||8)));}catch(e){}}
 function showHistory(){const hints=hintsTarget();const list=listTarget();if(list)list.innerHTML='';if(!hints)return;const history=readHistory();if(!history.length){hints.innerHTML='<p class="palette__empty">'+esc(t('search.hint',''))+'</p>';return;}
