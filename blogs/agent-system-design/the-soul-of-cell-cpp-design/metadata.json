@@ -222,7 +222,259 @@
       "aliases": []
     },
     {
-      "id": "agent-system-design/cell-cpp-zh",
+      "id": "agent-system-design/readme",
+      "title": "cell.cpp",
+      "subtitle": "",
+      "excerpt": "cell.cpp A single-file AI coding agent in modern C++26 A lightweight AI coding agent written in modern C++26. Connect to OpenAI or Anthropic, chat with your codebase, and let the LLM read, write, edit…",
+      "author": "Yauntyours",
+      "date": "2026-10-13",
+      "updated": "2026-10-13",
+      "timestamp": "2026-10-13T00:00:00",
+      "tags": [],
+      "categories": [],
+      "topics": [],
+      "markers": [],
+      "cover": "",
+      "lang": "zh-CN",
+      "url": "blogs/agent-system-design/readme/app.html",
+      "draft": false,
+      "hidden": true,
+      "private": false,
+      "pinned": false,
+      "featured": false,
+      "weight": 0.0,
+      "series": "",
+      "collections": [],
+      "words": 6983,
+      "minutes": 17,
+      "hasCot": false,
+      "cot": [],
+      "toc": [
+        {
+          "level": 2,
+          "text": "Table of Contents",
+          "anchor": "table-of-contents",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Features",
+          "anchor": "features",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Quick start",
+          "anchor": "quick-start",
+          "children": [
+            {
+              "level": 3,
+              "text": "Prerequisites",
+              "anchor": "prerequisites",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Build",
+              "anchor": "build",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Run",
+              "anchor": "run",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "Command-line options",
+          "anchor": "command-line-options",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Slash commands",
+          "anchor": "slash-commands",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Tools",
+          "anchor": "tools",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Teamwork",
+          "anchor": "teamwork",
+          "children": [
+            {
+              "level": 3,
+              "text": "Shapes",
+              "anchor": "shapes",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "File lease and supervisor review",
+              "anchor": "file-lease-and-supervisor-review",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Workflow execution, gates and supervision",
+              "anchor": "workflow-execution-gates-and-supervision",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "tw operations",
+              "anchor": "tw-operations",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Reports",
+              "anchor": "reports",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "From the REPL",
+              "anchor": "from-the-repl",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Scheduling and failure handling",
+              "anchor": "scheduling-and-failure-handling",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "Notices",
+          "anchor": "notices",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Security model",
+          "anchor": "security-model",
+          "children": [
+            {
+              "level": 3,
+              "text": "1. Sandbox modes",
+              "anchor": "1-sandbox-modes",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "2. Path gate — check_path / is_sensitive_path",
+              "anchor": "2-path-gate-check_path-is_sensitive_path",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "3. Command gate — check / check_exec",
+              "anchor": "3-command-gate-check-check_exec",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "4. Human confirmation",
+              "anchor": "4-human-confirmation",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "5. Output hardening",
+              "anchor": "5-output-hardening",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "6. Credential vault",
+              "anchor": "6-credential-vault",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "Sessions and the working-directory model",
+          "anchor": "sessions-and-the-working-directory-model",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Configuration file",
+          "anchor": "configuration-file",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Runtime data layout",
+          "anchor": "runtime-data-layout",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Architecture",
+          "anchor": "architecture",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "The agent loop",
+          "anchor": "the-agent-loop",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Streaming UI and keyboard control",
+          "anchor": "streaming-ui-and-keyboard-control",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Interruptions and /reload",
+          "anchor": "interruptions-and-reload",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Logging, signals and exit codes",
+          "anchor": "logging-signals-and-exit-codes",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Self-test",
+          "anchor": "self-test",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Implementation notes",
+          "anchor": "implementation-notes",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "License",
+          "anchor": "license",
+          "children": []
+        }
+      ],
+      "aliases": [],
+      "parent": "agent-system-design"
+    },
+    {
+      "id": "agent-system-design/readme_zh",
       "title": "cell.cpp文档（中文机翻）",
       "subtitle": "",
       "excerpt": "cell.cpp文档（中文机翻） 现代 C++26 编写的单文件 AI 编程代理 一个用现代 C++26 编写的轻量级 AI 编程代理。连接 OpenAI 或 Anthropic，与你的代码库对话，让 LLM 读取、写入、编辑并执行——全部在沙箱中完成。 --…",
@@ -236,7 +488,7 @@
       "markers": [],
       "cover": "",
       "lang": "zh-CN",
-      "url": "blogs/agent-system-design/cell-cpp-zh/app.html",
+      "url": "blogs/agent-system-design/readme_zh/app.html",
       "draft": false,
       "hidden": true,
       "private": false,
@@ -245,8 +497,8 @@
       "weight": 0.0,
       "series": "",
       "collections": [],
-      "words": 10816,
-      "minutes": 27,
+      "words": 11409,
+      "minutes": 29,
       "hasCot": false,
       "cot": [],
       "toc": [
@@ -583,7 +835,7 @@
       "parent": "agent-system-design"
     }
   ],
-  "prev": "cell-cpp-zh",
+  "prev": "readme_zh",
   "next": "",
   "editUrl": "https://github.com/yauntyour/blog/edit/main/content/posts/agent-system-design/the-soul-of-cell-cpp-design.md",
   "assets": []
