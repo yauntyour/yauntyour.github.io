@@ -6,7 +6,7 @@
 <description>关于线性注意力、语言模型与工程实践的个人笔记。</description>
 <language>zh-CN</language>
 <atom:link href="https://yaunt.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/>
-<lastBuildDate>2026-10-13T09:12:58Z</lastBuildDate>
+<lastBuildDate>2026-10-16T16:03:44Z</lastBuildDate>
 <generator>Inkstone Static Blog Engine</generator>
 <item><title>Exact Linear Attention</title><link>https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</link><guid isPermaLink="true">https://yaunt.github.io/blog/blogs/exact-linear-attention/app.html</guid><pubDate>2026-06-04T00:00:00Z</pubDate><author>Yauntyours</author><category>线性注意力</category><category>注意力机制</category><category>MoE</category><category>记忆模块</category><category>YOLO</category><category>视觉模型</category><category>核函数</category><description><![CDATA[<p align="center">
 <a href="https://arxiv.org/abs/2605.18848" target="_blank" rel="noopener noreferrer"><img loading="lazy" decoding="async" src="https://img.shields.io/badge/arXiv-2605.18848-b31b1b.svg?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv"></a>&nbsp;
@@ -1177,7 +1177,7 @@
 <h3 id="一般架构">一般架构</h3>
 <p>一般地，我们认为机器学习遵循一个一般性的路线：</p>
 <figure class="codeblock" data-lang="text"><figcaption class="codeblock__bar"><span class="codeblock__dot" aria-hidden="true"></span><span class="codeblock__name">text</span><span class="codeblock__lang">text</span><button type="button" class="codeblock__copy" data-copy aria-label="复制代码">复制</button></figcaption><div class="codeblock__scroll"><pre><code class="language-text"><span class="cl">观察 → 表示 → 预测 → 决策 → 行动 → 反馈 → 更新 → 更好的观察与决策</span><span class="cl"> </span></code></pre></div></figure>
-<div class="mermaid" data-src-hash="11769340">
+<div class="mermaid" data-src-hash="53195755">
 flowchart TD
     Z[&quot;0：空白系统&lt;br/&gt;只有 0/1 比特&quot;] --&gt; P[&quot;感知&lt;br/&gt;观察环境/获取数据&quot;]
     P --&gt; R[&quot;表示&lt;br/&gt;编码为向量/符号/世界模型&quot;]
@@ -1479,14 +1479,15 @@ x \approx f(z)+\varepsilon,\quad z\in \mathbb{R}^d \\
 <p>压缩本身也有几个我很欣赏的工程细节：</p>
 <ul>
 <li>每条 <code>system</code> 消息原样保留，其他消息拆成&quot;对话文本&quot;和&quot;代理推理&quot;两部分分别摘要；</li>
-<li><strong>保留最近一条用户消息</strong> —— 因为只有 system 消息的对话记录会被很多聊天模板拒绝（<code>No user query found in messages</code>），也会让溢出重试没东西可重发；</li>
+<li><strong>摘要作为一条独立的助手回复，回填在幸存用户轮次的正后方</strong> —— 保留的永远是最近一条真实用户消息（绝不保留 tool_result 载体），摘要紧随其后，压缩后的对话记录读起来就是正常的轮次边界（user → assistant）：下一条用户输入落在摘要之后，而不是堆在一条没有回复的用户消息上，溢出重试也能顺着摘要继续，就像 <code>/reload</code> 续写部分回复那样；只有 system 消息的对话记录会被很多聊天模板拒绝（<code>No user query found in messages</code>）；</li>
 <li>归档优先：压缩前先把完整对话记录写到 <code>saved/msg-&lt;UTC&gt;.jsonl</code>，<strong>归档或摘要失败则上下文保持不变</strong>；</li>
 <li>摘要插入前<strong>再过一次注入清理器</strong>（摘要是模型生成的，但它同样来自被污染的输入）；</li>
 <li>read-before-edit 日志重置（较早的 <code>read</code> 结果已从上下文消失）；</li>
 <li>压缩模型可以<strong>不同于</strong>聊天模型。</li>
 </ul>
-<p>还有一处纯粹为了兼容现实而做的妥协：<code>fold_system_messages</code>。因为严格的服务端聊天模板（llama.cpp 的 Jinja）只接受<strong>恰好一条 system 消息且位于最前</strong>，所以每当会话状态在对话中途到达（通知、已加载技能、中断说明、压缩摘要），所有 system 消息都会按对话记录顺序合并进唯一的前导 system 消息。</p>
+<p>还有一处纯粹为了兼容现实而做的妥协：<code>fold_system_messages</code>。因为严格的服务端聊天模板（llama.cpp 的 Jinja）只接受<strong>恰好一条 system 消息且位于最前</strong>，所以每当会话状态在对话中途到达（通知、已加载技能、中断说明），所有 system 消息都会按对话记录顺序合并进唯一的前导 system 消息。</p>
 <p>这类代码不优雅，但它是<strong>必要的</strong>。我的一条经验是：<strong>Agent 系统里 30% 的代码是为了适配别人的怪癖，这很正常，别为它羞耻，也别试图抽象掉它。</strong></p>
+<p>同一套内存管理也下放给了子代理：它们<strong>没有轮次上限</strong>，上下文一旦超出模型窗口（或超过 500 条消息），子代理就把自己的输出摘要成一条助手消息，续在随任务携带的背景之后（背景本身永不压缩），原始对话记录先归档进任务目录（<code>&lt;worker&gt;.compact-&lt;UTC&gt;.jsonl</code>），再发一条 <code>compact</code> 通知，让监督者决定要不要喊停。摘要失败，记录保持原样。</p>
 <p>我的原则：<strong>压缩不是优化，是内存管理。</strong> 它必须可回退、可归档、可审计。</p>
 <hr />
 <h2 id="9-多代理必须有硬边界">9. 多代理必须有硬边界</h2>
@@ -1515,7 +1516,7 @@ x \approx f(z)+\varepsilon,\quad z\in \mathbb{R}^d \\
 <p>cell.cpp 做了三件事，我认为是及格线：</p>
 <p><strong>结构化日志。</strong> <code>[YYYY-MM-DD HH:MM:SS] LEVEL [cat  ] message</code>，UTC，类别包括 <code>boot</code> <code>core</code> <code>llm</code> <code>tool</code> <code>sess</code> <code>ctx</code> <code>cmd</code> <code>sandbox</code> <code>vault</code> 等 16 种。只有 <code>llm</code> 和 <code>tool</code> 活动镜像到控制台 —— 终端保持可读，文件保留一切。</p>
 <p><strong>使用统计。</strong> 按模型和按会话累计 <code>requests</code> / <code>messages</code> / <code>input_chars</code> / <code>output_chars</code> / <code>input_tokens</code> / <code>output_tokens</code> / <code>total_tokens</code>，外加<strong>提示缓存命中率</strong>（<code>cached_tokens / prompt_tokens</code> 或 <code>cache_read_input_tokens / (cache_read + input)</code>）。没有缓存命中率这个数，你根本没法判断长 Agent 跑得贵是不是 bug。</p>
-<p><strong>transcript 是调试器。</strong> <code>/export</code> 导出一个<strong>自包含 HTML 文件</strong>：无脚本无外部资源、明暗自适应、左侧粘性栏显示执行链并与右侧消息 1:1 链接、工具调用/工具结果/推理渲染为可折叠区；Teamwork 任务获得可点击的任务-阶段-子代理列表，可直接跳到每个代理的完整对话记录；工作流任务还能生成带门控菱形节点的流程图子页面。</p>
+<p><strong>transcript 是调试器。</strong> <code>/export</code> 导出一个<strong>自包含 HTML 文件</strong>：无脚本无外部资源、明暗自适应、左侧粘性栏显示执行链并与右侧消息 1:1 链接、工具调用/工具结果/推理渲染为可折叠区；Teamwork 任务获得可点击的任务-阶段-子代理列表，可直接跳到每个代理的完整对话记录；工作流任务还能生成带门控菱形节点的流程图子页面；而它对<strong>手机</strong>也是认真的——顶栏和字号收紧，视图标签变成拇指可达的底栏，侧栏折叠为点击打开的抽屉（一个隐藏 checkbox，依旧零脚本）。</p>
 <p>把 transcript 变成<strong>可以发给别人看的东西</strong>，这一点看似小，实际决定了你能不能和别人一起 debug 一个 Agent。</p>
 <p>我的原则：<strong>如果一次 Agent 跑完之后，你没法在 30 秒内定位到&quot;是哪一轮的哪个工具调用搞砸了&quot;，那这个系统的可观测性不及格。</strong></p>
 <hr />
@@ -1822,7 +1823,7 @@ x \approx f(z)+\varepsilon,\quad z\in \mathbb{R}^d \\
 <dd>按内容哈希重命名 CSS / JS 文件，使浏览器可以长期缓存它们。</dd>
 </dl>
 <h3 id="图表">图表</h3>
-<div class="mermaid" data-src-hash="34635899">
+<div class="mermaid" data-src-hash="81074404">
 flowchart LR
     A[Markdown] --&gt; B{Frontmatter 解析}
     B --&gt; C[建立文章图谱]
@@ -1835,7 +1836,7 @@ flowchart LR
     H --&gt; I[Service Worker 预缓存]
 
 </div>
-<div class="mermaid" data-src-hash="28910743">
+<div class="mermaid" data-src-hash="46537460">
 sequenceDiagram
     participant U as 访客
     participant W as Web Worker

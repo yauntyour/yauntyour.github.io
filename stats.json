@@ -1,17 +1,17 @@
 {
-  "generated": "2026-10-13T09:12:58",
-  "buildId": "b110873c",
+  "generated": "2026-10-16T16:03:44",
+  "buildId": "43e9fe1a",
   "total": {
     "posts": 8,
-    "pages": 2,
-    "words": 16988,
-    "minutes": 42
+    "pages": 3,
+    "words": 17261,
+    "minutes": 43
   },
   "byYear": [
     {
       "year": "2026",
       "posts": 6,
-      "words": 16536
+      "words": 16809
     },
     {
       "year": "2025",
